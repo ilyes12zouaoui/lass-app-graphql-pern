@@ -1,0 +1,52 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "author": "ilyes zouaoui",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.0",
+    "apollo-boost": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-link-error": "^1.1.12",
+    "apollo-link-ws": "^1.0.19",
+    "apollo-upload-client": "^11.0.0",
+    "apollo-utilities": "^1.3.2",
+    "formik": "^1.5.8",
+    "graphql": "^14.5.4",
+    "history": "^4.10.1",
+    "js-cookie": "^2.2.1",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "react": "^16.9.0",
+    "react-apollo": "^3.1.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "react-table": "^6.10.3",
+    "redux-starter-kit": "^0.7.0",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
