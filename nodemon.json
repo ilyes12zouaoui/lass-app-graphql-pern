@@ -1,0 +1,4 @@
+{
+  "watch": ["views/", "routes/", "models/"],
+  "ext": "js json ts twig"
+}

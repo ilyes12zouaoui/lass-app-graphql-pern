@@ -1,0 +1,111 @@
+scalar DateTime
+type Mutation {
+  createUser(data: CustomSimpleUserCreateInput!): User!
+  createAdmin(data: CustomSimpleUserCreateInput!): User!
+  loginUser(data: LoginUserInput!): LoginUserResult!
+  # loginAdmin(data: LoginAdminInput!): LoginAdminResult!
+  logout(data: LogoutInput!): Boolean!
+  activateAccount(data: ActivateAccountInput!): Boolean!
+  resetPasswordChechToken(data: ResetPasswordChechTokenInput!): Boolean!
+  resetPasswordUsingToken(data: ResetPasswordTokenInput!): Boolean!
+  resendAccountActivationEmail(
+    data: ResendAccountActivationEmailInput!
+  ): Boolean!
+  resendResetPasswordEmail(data: ResendResetPasswordEmailInput!): Boolean!
+  changeUserRoleToStaff(data: ChangeUserRoleToStaffInput!): User!
+  changeUserRoleToSimple(data: ChangeUserRoleToSimpleInput!): User!
+  banUser(data: BanUserInput!): User!
+  unbanUser(data: UnbanUserInput!): User!
+}
+
+type LoginUserResult {
+  jwt: String!
+}
+
+# type LoginAdminResult {
+#   jwt: String!
+# }
+
+input BanUserInput {
+  id: ID!
+}
+
+input UnbanUserInput {
+  id: ID!
+}
+
+input ChangeUserRoleToStaffInput {
+  id: ID!
+}
+
+input ChangeUserRoleToSimpleInput {
+  id: ID!
+}
+
+input ConfirmDoctorAccountInput {
+  id: ID!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+# input LoginAdminInput {
+#   email: String!
+#   password: String!
+# }
+
+input LogoutInput {
+  id: ID!
+}
+
+input CustomSimpleUserCreateInput {
+  email: String!
+  sexe: SexeType!
+  telephone: Int
+  address: String
+  description: String
+  password: String!
+  passwordConfirmation: String!
+  firstName: String!
+  lastName: String!
+  birthDate: DateTime!
+}
+
+input CustomDoctorCreateInput {
+  email: String!
+  sexe: SexeType!
+  address: String
+  description: String
+  telephone: Int
+  password: String!
+  passwordConfirmation: String!
+  firstName: String!
+  lastName: String!
+  birthDate: DateTime!
+  code: String!
+  category: String!
+}
+
+input ActivateAccountInput {
+  token: String!
+}
+
+input ResetPasswordChechTokenInput {
+  token: String!
+}
+
+input ResetPasswordTokenInput {
+  token: String!
+  password: String!
+  confirmationPassword: String!
+}
+
+input ResendAccountActivationEmailInput {
+  email: String!
+}
+
+input ResendResetPasswordEmailInput {
+  email: String!
+}

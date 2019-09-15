@@ -1,0 +1,50 @@
+type User {
+  isBaned: Boolean @default(value: false)
+  address: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  description: String
+  lastLoginTime: DateTime
+  lastLogoutTime: DateTime
+  isOnline: Boolean @default(value : false)
+  id: ID! @id
+  email : String! @unique
+  password: String!
+  firstName : String!
+  lastName : String!
+  birthDate : DateTime!
+  sexe: SexeType!
+  telephone: Int @unique
+  isActive : Boolean @default(value: false)
+  role : UserRole!
+  image: String @default(value: "defaultImage.jpg")
+}
+type Token {
+  id: ID! @id
+  type: TokenType!
+  user: User! @relation(link: INLINE)
+  value: String! @unique
+  createdAt: DateTime! @createdAt
+}
+
+type Claim {
+  id: ID! @id
+  title: String
+  content: String!
+  email: String!
+}
+
+enum SexeType {
+  HOMME
+  FEMME
+  AUTRE
+}
+enum TokenType {
+  ACCOUNT_ACTIVATION
+  RESET_PASSWORD
+}
+enum UserRole {
+  ADMIN
+  STAFF
+  SIMPLE
+}

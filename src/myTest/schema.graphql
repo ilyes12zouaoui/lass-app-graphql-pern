@@ -1,0 +1,9 @@
+type Mutation {
+  myTest: String!
+}
+type Query {
+  myTest: [aa!]
+}
+type aa {
+  name: String
+}

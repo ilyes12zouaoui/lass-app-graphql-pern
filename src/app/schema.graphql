@@ -1,0 +1,4 @@
+# import Query.*, Mutation.*, * from '../authentication/schema.graphql'
+# import Query.*, Mutation.*, * from '../user/schema.graphql'
+# import * from '../../prisma/generated/prisma.graphql'
+

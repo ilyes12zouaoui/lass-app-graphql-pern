@@ -11,7 +11,7 @@ import {
   PageNotFoundRoute
 } from "./routes";
 
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 
 const App = () => {
   const userRole = useSelector(state => {
