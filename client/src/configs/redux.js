@@ -1,6 +1,6 @@
 import { configureStore } from "redux-starter-kit";
 
-import authReducer from "../components/Authentication/store/reducer";
+import authReducer from "./store/authentication/reducer";
 
 const reducer = {
   authentication: authReducer

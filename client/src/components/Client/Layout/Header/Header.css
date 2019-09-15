@@ -1,0 +1,35 @@
+div.dropdown-menu[role="client-header-dropdown-menu"] {
+  right: 0 !important;
+  left: auto;
+}
+div.dropdown-menu[role="client-header-dropdown-menu"] a {
+  color: #555 !important;
+}
+div.dropdown-menu[role="client-header-dropdown-menu"] a:hover {
+  background-color: #007bffaa !important;
+}
+div.dropdown-menu[role="client-header-dropdown-menu"] a.active {
+  background-color: #007bffaa !important;
+}
+
+a.client-header-dropdown-toggle {
+  color: white !important;
+}
+
+nav.client-header {
+  background-color: #007bffc9 !important;
+}
+
+nav.client-header a {
+  /* color: black !important; */
+  font-weight: 500 !important;
+}
+nav.client-header a:hover {
+  /* color: black !important; */
+  /* background-color: #007bff !important; */
+}
+
+a.client-header-brand {
+  /* color: white !important; */
+  font-size: 16px;
+}

@@ -2,7 +2,7 @@ import { createAction } from "redux-starter-kit";
 import jwt_decode from "jwt-decode";
 // import cookie from "js-cookie";
 
-import { history } from "../../../configs/history";
+import { history } from "../../history";
 export const insertUserInformations = createAction("INSERT_USER_INFORMATIONS");
 
 export const diconnectUser = createAction("DISCONNECT_USER");
