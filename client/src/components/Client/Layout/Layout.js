@@ -6,7 +6,13 @@ const Layout = props => {
   return (
     <>
       <Header />
-      <main>{props.children || "empty main"}</main>
+      <main
+        style={{
+          backgroundColor: "rgb(246, 247, 247)"
+        }}
+      >
+        {props.children || "empty main"}
+      </main>
       <Footer />
     </>
   );

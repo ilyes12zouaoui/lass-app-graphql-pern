@@ -2,7 +2,7 @@ import { createAction } from "redux-starter-kit";
 import jwt_decode from "jwt-decode";
 // import cookie from "js-cookie";
 
-import { history } from "../../history";
+import { history } from "../../configs/history";
 export const insertUserInformations = createAction("INSERT_USER_INFORMATIONS");
 
 export const diconnectUser = createAction("DISCONNECT_USER");
@@ -25,10 +25,18 @@ export const thunkDisconnectUserAfterTimeOut = expirationTime => {
   };
 };
 
+export const ThunkCheckIfAlreadyAuthenticated = () => {
+  const jwt = localStorage.getItem("LassAppJwt");
+
+  if (!!jwt) {
+    ThunkAuthenticateUser({ jwt, isRedirecting: false });
+  }
+};
+
 export const ThunkAuthenticateUser = payload => dispatch => {
   const { jwt, isRedirecting, redirectTo = "/" } = payload;
-  // cookie.set("alzhelpsJwt", jwt);
-  localStorage.setItem("alzhelpsJwt", jwt);
+  // cookie.set("LassAppJwt", jwt);
+  localStorage.setItem("LassAppJwt", jwt);
   let user = jwt_decode(jwt);
   dispatch(
     insertUserInformations({
@@ -49,8 +57,8 @@ export const ThunkAuthenticateUser = payload => dispatch => {
 
 export const ThunkDisconnectUser = () => dispatch => {
   // it's always dispatched on client
-  // cookie.remove("alzhelpsJwt");
-  localStorage.removeItem("alzhelpsJwt");
+  // cookie.remove("LassAppJwt");
+  localStorage.removeItem("LassAppJwt");
 
   dispatch(diconnectUser());
   history.push("/");

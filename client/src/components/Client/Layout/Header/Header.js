@@ -29,8 +29,14 @@ const Header = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={ReactRouterNavLink} to="/">
+          <Nav.Link as={ReactRouterNavLink} exact to="/">
             Home
+          </Nav.Link>
+          <Nav.Link as={ReactRouterNavLink} exact to="/login">
+            Login
+          </Nav.Link>
+          <Nav.Link as={ReactRouterNavLink} exact to="/inscription">
+            Inscription
           </Nav.Link>
 
           <NavDropdown

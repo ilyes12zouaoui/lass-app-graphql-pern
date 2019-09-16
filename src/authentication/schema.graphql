@@ -1,7 +1,7 @@
 scalar DateTime
 type Mutation {
-  createUser(data: CustomSimpleUserCreateInput!): User!
-  createAdmin(data: CustomSimpleUserCreateInput!): User!
+  createUser(data: CustomUserCreateInput!): User!
+  createAdmin(data: CustomUserCreateInput!): User!
   loginUser(data: LoginUserInput!): LoginUserResult!
   # loginAdmin(data: LoginAdminInput!): LoginAdminResult!
   logout(data: LogoutInput!): Boolean!
@@ -42,10 +42,6 @@ input ChangeUserRoleToSimpleInput {
   id: ID!
 }
 
-input ConfirmDoctorAccountInput {
-  id: ID!
-}
-
 input LoginUserInput {
   email: String!
   password: String!
@@ -60,7 +56,7 @@ input LogoutInput {
   id: ID!
 }
 
-input CustomSimpleUserCreateInput {
+input CustomUserCreateInput {
   email: String!
   sexe: SexeType!
   telephone: Int
@@ -71,21 +67,6 @@ input CustomSimpleUserCreateInput {
   firstName: String!
   lastName: String!
   birthDate: DateTime!
-}
-
-input CustomDoctorCreateInput {
-  email: String!
-  sexe: SexeType!
-  address: String
-  description: String
-  telephone: Int
-  password: String!
-  passwordConfirmation: String!
-  firstName: String!
-  lastName: String!
-  birthDate: DateTime!
-  code: String!
-  category: String!
 }
 
 input ActivateAccountInput {

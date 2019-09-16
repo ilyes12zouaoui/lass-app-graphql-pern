@@ -25,8 +25,10 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-spinners-kit": "^1.9.0",
     "react-table": "^6.10.3",
     "redux-starter-kit": "^0.7.0",
+    "styled-components": "^4.3.2",
     "yup": "^0.27.0"
   },
   "scripts": {

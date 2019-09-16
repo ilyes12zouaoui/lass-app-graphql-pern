@@ -26,7 +26,7 @@ nav.client-header a {
 }
 nav.client-header a:hover {
   /* color: black !important; */
-  /* background-color: #007bff !important; */
+  background-color: #007bff !important;
 }
 
 a.client-header-brand {
