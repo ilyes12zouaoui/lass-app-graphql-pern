@@ -154,7 +154,7 @@ const emailTemplate = (firstName, lastName, token) => {
 																		<td align="center">
 																			<table width="140" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="text-button white-button" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:10px; background:#ffffff; color:#f54084; font-weight:bold;"><a href="http://localhost:3000/authentication/reset-password/${token}" target="_blank" class="link" style="color:rgb(33, 173, 228); text-decoration:none;"><span class="link" style="color:rgb(33, 173, 228); text-decoration:none;">aCTIVATE</span></a></td>
+																					<td class="text-button white-button" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:10px; background:#ffffff; color:#f54084; font-weight:bold;"><a href="http://localhost:3000/reset-password/${token}" target="_blank" class="link" style="color:rgb(33, 173, 228); text-decoration:none;"><span class="link" style="color:rgb(33, 173, 228); text-decoration:none;">aCTIVATE</span></a></td>
 																				</tr>
 																			</table>
 																		</td>
