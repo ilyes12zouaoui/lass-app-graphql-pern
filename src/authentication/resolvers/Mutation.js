@@ -212,7 +212,7 @@ module.exports = {
     } else {
       token = token[0];
     }
-    sendEmail(user, token.value, EMAIL_TEMPLETES.EMAIL_TEMPLATE);
+    sendEmail(user, token.value, EMAIL_TEMPLETES.ACCOUNT_ACTIVATION);
 
     return true;
   },
@@ -241,7 +241,7 @@ module.exports = {
     } else {
       token = token[0];
     }
-    sendEmail(user, token.value, EMAIL_TEMPLETES.EMAIL_TEMPLATE_PASSWORD);
+    sendEmail(user, token.value, EMAIL_TEMPLETES.RESET_PASSWORD);
 
     return true;
   },

@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import Loading from "../../UI/Loading";
 import GraphqlErrorHandler from "../../UI/GraphqlErrorHandler";
+import ResendAccoutActivationEmail from "./ResendAccoutActivationEmail";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -19,6 +20,11 @@ const initialValues = {
 };
 
 const Login = ({ loginUser, error, data, loading }) => {
+  const isInactiveAccount =
+    error &&
+    error.graphQLErrors &&
+    error.graphQLErrors[0] &&
+    error.graphQLErrors[0].message.includes("inactive");
   return (
     <Formik
       validationSchema={validationSchema}
@@ -76,7 +82,11 @@ const Login = ({ loginUser, error, data, loading }) => {
               Login
             </button>
             {loading ? <Loading /> : null}
-            <GraphqlErrorHandler error={error || null} />
+            {isInactiveAccount ? (
+              <ResendAccoutActivationEmail email={values.email} />
+            ) : (
+              <GraphqlErrorHandler error={error || null} />
+            )}
             {!!data ? <div className="color-blue mt-2">success</div> : null}
           </Form>
         );

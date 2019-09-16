@@ -1,5 +1,5 @@
 import React from "react";
-import LoginForm from "../components/Client/Authentication/Login/LoginContianer";
+import LoginForm from "../components/Client/Authentication/Login/LoginContainer";
 
 import FormLayout from "../components/Client/HOC/FormLayout/FormLayout";
 const Login = () => {

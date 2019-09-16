@@ -1,6 +1,7 @@
 import Login from "./Login";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../../../../graphql/mutations/authentication/loginUser";
+import ResendAccoutActivationEmail from "./ResendAccoutActivationEmail";
 import React from "react";
 const LoginContainer = () => {
   const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
