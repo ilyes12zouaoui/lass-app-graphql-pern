@@ -121,7 +121,7 @@ const emailTemplate = (firstName, lastName, token) => {
 														<th class="column-dir" dir="ltr" width="200" style="padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="m-center mpb10" style="text-align:center;"><h1 style="font-size: 38px;color:rgb(33, 173, 228);">IEEE ESPRIT</h1></td>
+																		<td class="m-center mpb10" style="text-align:center;"><h1 style="font-size: 38px;color:rgb(33, 173, 228);">LASS APP</h1></td>
 																	</tr>
 																</table>
 															</th>
@@ -147,7 +147,7 @@ const emailTemplate = (firstName, lastName, token) => {
 																		<td class="h2-white pb20" style="color:#ffffff; font-family:Arial, sans-serif; font-size:52px; line-height:58px; text-transform:uppercase; font-weight:bold; text-align:center; padding-bottom:20px;">${firstName} <br />${lastName}</td>
 																	</tr>
 																	<tr>
-																		<td class="text4 pb20" style="color:#d2d4ff; font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:24px; text-align:center; padding-bottom:20px;">Please click the link below to reset your password</td>
+																		<td class="text4 pb20" style="color:#d2d4ff; font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:24px; text-align:center; padding-bottom:20px;">Please click on the button below to reset your password</td>
 																	</tr>
 																	<!-- Button -->
 																	<tr>

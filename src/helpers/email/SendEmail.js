@@ -10,14 +10,14 @@ const produceEmailData = (user, token, TEMPLETE) => {
     to: user.email
   };
   if (TEMPLETE == EMAIL_TEMPLETES.ACCOUNT_ACTIVATION) {
-    emailData["subject"] = "Account Activation Lass";
+    emailData["subject"] = "Account Activation LASS APP";
     emailData["html"] = accountActivationEmailTemplate(
       user.firstName,
       user.lastName,
       token
     );
   } else if (TEMPLETE == EMAIL_TEMPLETES.RESET_PASSWORD) {
-    emailData["subject"] = "Reset Password Lass";
+    emailData["subject"] = "Reset Password LASS APP";
     emailData["html"] = resetPasswordEmailTempalte(
       user.firstName,
       user.lastName,
