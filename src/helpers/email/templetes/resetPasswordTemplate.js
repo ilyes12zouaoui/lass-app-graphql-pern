@@ -109,19 +109,23 @@ const emailTemplate = (firstName, lastName, token) => {
 						<td align="center" class="main" >
             <table width="650" border="0" style="padding:50px 0 50px 0 ;" cellspacing="0" cellpadding="0" class="mobile-shell">
             <tr>
-									<td class="td" style="box-shadow: 0px 0px 23px -5px rgba(0,0,0,0.4);width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
+									<td class="td" style="box-shadow: 0px 0px 23px -5px rgba(0,0,0,0.4);width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;
+									border-style: solid;
+									border-width: 1px;
+									border-color: #21ade4;">
 										
 
 										<!-- Header -->
-										<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-											<tr>
-												<td style="padding: 30px 0px 30px 30px;">
-													<table width="100%" border="0" cellspacing="0" cellpadding="0" dir="rtl" style="direction: rtl;">
-														<tr>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#21ade4" align="center">
+										<tr>
+												<td style="padding: 30px 0px 0px 0px;">
+												<table width="300px" border="0" align="center" bgcolor="#fff" cellspacing="0" cellpadding="0" dir="rtl" style="direction: rtl;width:300px">
+												<tr>
 														<th class="column-dir" dir="ltr" width="200" style="padding:0; margin:0; font-weight:normal; direction:ltr;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td class="m-center mpb10" style="text-align:center;"><h1 style="font-size: 38px;color:rgb(33, 173, 228);">LASS APP</h1></td>
+																		<td class="m-center mpb10" style="text-align:center;
+																		padding: 18px 18px 18px 18px;"><h1 style="font-size: 38px;color:rgb(33, 173, 228);">LASS APP</h1></td>
 																	</tr>
 																</table>
 															</th>
@@ -154,7 +158,7 @@ const emailTemplate = (firstName, lastName, token) => {
 																		<td align="center">
 																			<table width="140" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="text-button white-button" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:10px; background:#ffffff; color:#f54084; font-weight:bold;"><a href="http://localhost:3000/reset-password/${token}" target="_blank" class="link" style="color:rgb(33, 173, 228); text-decoration:none;"><span class="link" style="color:rgb(33, 173, 228); text-decoration:none;">aCTIVATE</span></a></td>
+																					<td class="text-button white-button" style="font-family:'Raleway', Arial,sans-serif; font-size:14px; line-height:18px; text-align:center; text-transform:uppercase; padding:10px; background:#ffffff; color:#f54084; font-weight:bold;"><a href="http://localhost:3000/reset-password/${token}" target="_blank" class="link" style="color:rgb(33, 173, 228); text-decoration:none;"><span class="link" style="color:rgb(33, 173, 228); text-decoration:none;">Reset password</span></a></td>
 																				</tr>
 																			</table>
 																		</td>

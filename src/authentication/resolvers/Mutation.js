@@ -253,7 +253,7 @@ module.exports = {
         type: TOKEN_TYPES.RESET_PASSWORD
       }
     });
-    if (_.isEmpty(tokenExists)) throw new Error("wrong activation token");
+    if (_.isEmpty(tokenExists)) throw new Error("wrong reset password token");
     return true;
   },
   resetPasswordUsingToken: async (parent, { data }, { prisma }) => {

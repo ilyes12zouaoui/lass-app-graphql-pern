@@ -5,6 +5,8 @@ import GraphqlErrorHandler from "../../UI/GraphqlErrorHandler";
 import ResendAccoutActivationEmail from "./ResendAccoutActivationEmail";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { NavLink } from "react-router-dom";
+import "./Login.css";
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -81,6 +83,14 @@ const Login = ({ loginUser, error, data, loading }) => {
             >
               Login
             </button>
+            <div className="mt-2">
+              <NavLink
+                to="/resend-reset-password-email"
+                className="forgot-your-password-link"
+              >
+                forgot your password ?
+              </NavLink>
+            </div>
             {loading ? <Loading /> : null}
             {isInactiveAccount ? (
               <ResendAccoutActivationEmail email={values.email} />

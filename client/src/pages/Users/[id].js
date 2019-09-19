@@ -1,8 +1,8 @@
 import React from "react";
-
-const User = ({ match }) => {
+import User from "../../components/Client/Users/UserContainer";
+const UserPage = ({ match }) => {
   const id = match.params.id;
-  return <div>User {id}</div>;
+  return <User />;
 };
 
-export default User;
+export default UserPage;

@@ -1,10 +1,7 @@
 import gql from "graphql-tag";
 
-export const CREATE_USER = gql`
-  mutation($data: CustomUserCreateInput!) {
-    createUser(data: $data) {
-      id
-      email
-    }
+export const RESEND_RESET_PASSWORD_EMAIL = gql`
+  mutation($data: ResendResetPasswordEmailInput!) {
+    resendResetPasswordEmail(data: $data)
   }
 `;

@@ -1,6 +1,12 @@
 export { default as HomePage } from "./home";
 export { default as InscriptionPage } from "./inscription";
 export { default as LoginPage } from "./login";
+export { default as AccountActivationPage } from "./account-activation";
+export { default as ResetPassword } from "./reset-password";
+export {
+  default as ResendResetPasswordEmail
+} from "./resend-reset-password-email";
+
 // 404
 export { default as PageNotFound } from "./page-not-found";
 

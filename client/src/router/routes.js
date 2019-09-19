@@ -11,15 +11,45 @@ import {
   UserPage,
   AdminHome,
   AdminUsers,
-  PageNotFound
+  PageNotFound,
+  AccountActivationPage,
+  ResetPassword,
+  ResendResetPasswordEmail
 } from "../pages";
 export const CommunRoutes = [
+  <Route
+    path="/reset-password/:token"
+    exact
+    render={() => (
+      <ClientLayout>
+        <ResetPassword />
+      </ClientLayout>
+    )}
+  />,
+  <Route
+    path="/resend-reset-password-email"
+    exact
+    render={() => (
+      <ClientLayout>
+        <ResendResetPasswordEmail />
+      </ClientLayout>
+    )}
+  />,
   <Route
     path="/"
     exact
     render={() => (
       <ClientLayout>
         <HomePage />
+      </ClientLayout>
+    )}
+  />,
+  <Route
+    path="/account-activation/:token"
+    exact
+    render={() => (
+      <ClientLayout>
+        <AccountActivationPage />
       </ClientLayout>
     )}
   />,

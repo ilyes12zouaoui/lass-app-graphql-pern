@@ -16,7 +16,7 @@ const Header = () => {
       className="client-header"
       bg="primary"
       expand="md"
-      variant="dark"
+      variant="light"
       sticky="top"
     >
       <Navbar.Brand

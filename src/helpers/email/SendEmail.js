@@ -6,7 +6,7 @@ const { GMAIL_CONFIGURATIONS, EMAIL_TEMPLETES } = require("./Configs");
 const produceEmailData = (user, token, TEMPLETE) => {
   // console.log("user", user);
   let emailData = {
-    from: "Alzhelps " + GMAIL_CONFIGURATIONS.EMAIL_ADRESSE,
+    from: "LASS APP " + GMAIL_CONFIGURATIONS.EMAIL_ADRESSE,
     to: user.email
   };
   if (TEMPLETE == EMAIL_TEMPLETES.ACCOUNT_ACTIVATION) {

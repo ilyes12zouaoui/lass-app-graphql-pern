@@ -80,7 +80,7 @@ input ResetPasswordChechTokenInput {
 input ResetPasswordTokenInput {
   token: String!
   password: String!
-  confirmationPassword: String!
+  passwordConfirmation: String!
 }
 
 input ResendAccountActivationEmailInput {

@@ -16,7 +16,7 @@ const disconnectTimeMilliSeconds = jwt => {
   );
 };
 
-export const thunkDisconnectUserAfterTimeOut = expirationTime => {
+export const ThunkDisconnectUserAfterTimeOut = expirationTime => {
   // console.log("time to timeout", expirationTime / 1000);
   return dispatch => {
     setTimeout(() => {
@@ -34,7 +34,7 @@ export const ThunkCheckIfAlreadyAuthenticated = () => {
 };
 
 export const ThunkAuthenticateUser = payload => dispatch => {
-  const { jwt, isRedirecting, redirectTo = "/" } = payload;
+  const { jwt, isRedirecting, redirectTo = "" } = payload;
   // cookie.set("LassAppJwt", jwt);
   localStorage.setItem("LassAppJwt", jwt);
   let user = jwt_decode(jwt);
@@ -45,9 +45,11 @@ export const ThunkAuthenticateUser = payload => dispatch => {
       isAuthenticated: true
     })
   );
-  dispatch(thunkDisconnectUserAfterTimeOut(disconnectTimeMilliSeconds(jwt)));
+  dispatch(ThunkDisconnectUserAfterTimeOut(disconnectTimeMilliSeconds(jwt)));
   if (isRedirecting) {
-    if (user.role == "ADMIN") {
+    if (redirectTo != "") {
+      history.push(redirectTo);
+    } else if (user.role == "ADMIN") {
       history.push("/admin/users");
     } else {
       history.push(`/user/${user && user.id}`);
