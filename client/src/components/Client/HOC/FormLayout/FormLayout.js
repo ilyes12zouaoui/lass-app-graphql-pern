@@ -13,8 +13,8 @@ const FormLayout = ({ title, ...props }) => {
           className="fly-box p-sm-5 p-4"
         >
           <h1
-            className="display-4 pb-2"
-            style={{ color: "#007bffc9", fontSize: "40px" }}
+            className="display-4 pb-2 color-blue"
+            style={{ fontSize: "40px" }}
           >
             {title || ""}
           </h1>

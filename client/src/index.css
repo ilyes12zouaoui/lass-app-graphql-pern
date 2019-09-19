@@ -22,10 +22,10 @@ code {
 }
 
 .bg-blue {
-  background-color: #007bffdd !important;
+  background-color: #22aeffc9 !important;
 }
 .color-blue {
-  color: #007bffc9 !important;
+  color: #22aeffc9 !important;
 }
 .error-color {
   color: #dc3545;
@@ -37,7 +37,7 @@ code {
   border-radius: 10px;
 }
 .button-custom:hover {
-  background-color: #007bfffa !important;
+  background-color: #07a4ffc9 !important;
 }
 .hr-custom {
   max-width: 90%;

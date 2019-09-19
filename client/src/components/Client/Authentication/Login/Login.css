@@ -1,3 +1,7 @@
 .forgot-your-password-link:hover {
-  color: #007bffdd;
+  color: #00a2ffc9 !important;
+}
+
+.forgot-your-password-link {
+  color: #22aeffc9 !important;
 }

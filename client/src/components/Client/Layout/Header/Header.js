@@ -9,6 +9,8 @@ import {
   Container,
   Dropdown
 } from "react-bootstrap";
+import Link from "./Link/Link";
+import DropDown from "./DropDown/DropDown";
 import "./Header.css";
 const Header = () => {
   return (
@@ -29,29 +31,17 @@ const Header = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link as={ReactRouterNavLink} exact to="/">
-            Home
-          </Nav.Link>
-          <Nav.Link as={ReactRouterNavLink} exact to="/login">
-            Login
-          </Nav.Link>
-          <Nav.Link as={ReactRouterNavLink} exact to="/inscription">
-            Inscription
-          </Nav.Link>
+          <Link title="Home" to="/" />
+          <Link title="Login" to="/login" />
+          <Link title="Inscription" to="/inscription" />
 
-          <NavDropdown
-            menuRole="client-header-dropdown-menu"
+          <DropDown
             title="Dropdown"
-            bsPrefix="nav-link client-header-dropdown-toggle"
-            id="collasible-nav-dropdown"
-          >
-            <NavDropdown.Item as={ReactRouterNavLink} to="/users/1">
-              Action
-            </NavDropdown.Item>
-            <NavDropdown.Item as={ReactRouterNavLink} to="/users/2">
-              Another action
-            </NavDropdown.Item>
-          </NavDropdown>
+            listLinks={[
+              { title: "Action", to: "/users/1" },
+              { title: "Action 2", to: "/users/2" }
+            ]}
+          />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
