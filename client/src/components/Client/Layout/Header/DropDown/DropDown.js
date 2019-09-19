@@ -10,8 +10,8 @@ import {
 } from "react-bootstrap";
 import Link from "./Link";
 
-const DropDown = ({ title, listLinks = [], ...props }) => {
-  const Links = listLinks.map(link => {
+const DropDown = ({ title, linksList = [], ...props }) => {
+  const Links = linksList.map(link => {
     return <Link key={link.title} {...link} />;
   });
 

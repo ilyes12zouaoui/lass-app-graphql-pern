@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Button, Col } from "react-bootstrap";
 import Loading from "../../UI/Loading";
+
 import GraphqlErrorHandler from "../../UI/GraphqlErrorHandler";
 import ResendAccoutActivationEmail from "./ResendAccoutActivationEmail";
 import { Formik } from "formik";

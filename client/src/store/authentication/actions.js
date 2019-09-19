@@ -25,18 +25,18 @@ export const ThunkDisconnectUserAfterTimeOut = expirationTime => {
   };
 };
 
-export const ThunkCheckIfAlreadyAuthenticated = () => {
-  const jwt = localStorage.getItem("LassAppJwt");
+export const ThunkCheckIfAlreadyAuthenticated = payload => dispatch => {
+  const jwt = localStorage.getItem("lass-app-jwt-token");
 
   if (!!jwt) {
-    ThunkAuthenticateUser({ jwt, isRedirecting: false });
+    dispatch(ThunkAuthenticateUser({ jwt, isRedirecting: false }));
   }
 };
 
 export const ThunkAuthenticateUser = payload => dispatch => {
   const { jwt, isRedirecting, redirectTo = "" } = payload;
   // cookie.set("LassAppJwt", jwt);
-  localStorage.setItem("LassAppJwt", jwt);
+  localStorage.setItem("lass-app-jwt-token", jwt);
   let user = jwt_decode(jwt);
   dispatch(
     insertUserInformations({
@@ -52,7 +52,7 @@ export const ThunkAuthenticateUser = payload => dispatch => {
     } else if (user.role == "ADMIN") {
       history.push("/admin/users");
     } else {
-      history.push(`/user/${user && user.id}`);
+      history.push(`/users/${user && user.id}`);
     }
   }
 };
@@ -60,7 +60,7 @@ export const ThunkAuthenticateUser = payload => dispatch => {
 export const ThunkDisconnectUser = () => dispatch => {
   // it's always dispatched on client
   // cookie.remove("LassAppJwt");
-  localStorage.removeItem("LassAppJwt");
+  localStorage.removeItem("lass-app-jwt-token");
 
   dispatch(diconnectUser());
   history.push("/");

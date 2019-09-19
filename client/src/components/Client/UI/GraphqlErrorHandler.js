@@ -1,6 +1,6 @@
 import { isEmpty } from "lodash";
 import React from "react";
-export default ({ error }) => {
+export default ({ error = null }) => {
   if (!error) return null;
   console.log("err", error.graphQLErrors, "net", error.networkError);
   if (!isEmpty(error.graphQLErrors)) {

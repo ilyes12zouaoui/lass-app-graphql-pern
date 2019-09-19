@@ -11,8 +11,8 @@ const Loading = () => {
         flexDirection: "column"
       }}
     >
-      <CubeSpinner backColor="#ff004ecc" frontColor="#007bffcc" />
-      <div style={{ color: "#007bffcc" }} className="mt-2">
+      <CubeSpinner backColor="#ff004ecc" frontColor="#22aeffc9" />
+      <div style={{ color: "#22aeffc9" }} className="mt-2">
         Loading...
       </div>
     </div>
