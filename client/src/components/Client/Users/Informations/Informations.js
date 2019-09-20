@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 import style from "./Informations.module.css";
+import Update from "./Update/Update";
 const Informations = ({
   isOwner = false,
   email,
@@ -61,6 +62,7 @@ const Informations = ({
           {address ? address : "not provided by the user"}
         </span>
       </div>
+      {isOwner ? <Update /> : null}
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import Loading from "./Loading";
 import { Row, Col, Container } from "react-bootstrap";
 
 const LoadingFlyingBox = () => {
@@ -20,7 +19,7 @@ const LoadingFlyingBox = () => {
             justifyContent: "center"
           }}
         >
-          <Loading />
+          <h1 calssName="color-blue">404 not found</h1>
         </Col>
       </Row>
       {/* </div> */}

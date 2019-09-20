@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "./Image/Image";
 import Informations from "./Informations/Informations";
-
 const FormLayout = ({ user, isOwner = false }) => {
   const src = `/images/users/${user.image}`;
   console.log("is the owner", isOwner);

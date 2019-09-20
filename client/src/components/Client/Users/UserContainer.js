@@ -19,9 +19,10 @@ const UserContainer = ({ match }) => {
 
   if (!!error) return <GraphqlErrorFlyingBox error={error} />;
   if (loading) return <LoadingFlyingBox />;
-  console.log("il data", data.user);
+
   const isOwner = user && user.id == id;
-  return <User user={data.user} isOwner={isOwner} />;
+  if (!isOwner) user = data.user;
+  return <User user={user} isOwner={isOwner} />;
 };
 
 export default withRouter(UserContainer);

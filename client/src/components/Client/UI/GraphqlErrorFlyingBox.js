@@ -13,6 +13,12 @@ const LoadingFlyingBox = ({ error = null }) => {
           sm={{ offset: 2, span: 8 }}
           xs={{ offset: 1, span: 10 }}
           className="fly-box p-sm-5 p-4 text-center"
+          style={{
+            minHeight: "400px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
         >
           <GraphqlErrorHandler error={error} />
         </Col>

@@ -36,7 +36,6 @@ export const ThunkCheckIfAlreadyAuthenticated = payload => dispatch => {
 export const ThunkAuthenticateUser = payload => dispatch => {
   const { jwt, isRedirecting, redirectTo = "" } = payload;
   // cookie.set("LassAppJwt", jwt);
-  localStorage.setItem("lass-app-jwt-token", jwt);
   let user = jwt_decode(jwt);
   dispatch(
     insertUserInformations({
@@ -45,6 +44,8 @@ export const ThunkAuthenticateUser = payload => dispatch => {
       isAuthenticated: true
     })
   );
+  localStorage.setItem("lass-app-jwt-token", jwt);
+
   dispatch(ThunkDisconnectUserAfterTimeOut(disconnectTimeMilliSeconds(jwt)));
   if (isRedirecting) {
     if (redirectTo != "") {

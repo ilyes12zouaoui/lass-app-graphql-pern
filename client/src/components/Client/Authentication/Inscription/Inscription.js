@@ -68,7 +68,7 @@ const Inscription = ({ createUser, error, data, loading }) => {
           email: values.email,
           birthDate: `${values.year}-${values.month}-${values.day}`,
           ...(values.telephone && { telephone: values.telephone }),
-          ...(values.address && { telephone: values.address }),
+          ...(values.address && { address: values.address }),
           sexe: values.sexe
         };
         createUser({ variables: { data } });

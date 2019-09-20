@@ -24,11 +24,26 @@ code {
 .bg-blue {
   background-color: #22aeffc9 !important;
 }
+.bg-blue:hover {
+  background-color: #22aeff !important;
+}
 .color-blue {
   color: #22aeffc9 !important;
 }
 .error-color {
+  color: #ff004ecc;
+}
+.color-pink {
+  color: #ff004ecc;
+}
+.color-red {
   color: #dc3545;
+}
+.form-control.is-invalid {
+  border-color: #ff004ecc !important;
+}
+.form-control.is-invalid ~ .invalid-feedback {
+  color: #ff004ecc !important;
 }
 .button-custom {
   color: white;
