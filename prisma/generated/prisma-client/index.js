@@ -13,7 +13,7 @@ var models = [
     embedded: false
   },
   {
-    name: "Claim",
+    name: "ContactUsMessage",
     embedded: false
   },
   {

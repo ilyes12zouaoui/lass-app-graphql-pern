@@ -16,7 +16,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  claim: (where?: ClaimWhereInput) => Promise<boolean>;
+  contactUsMessage: (where?: ContactUsMessageWhereInput) => Promise<boolean>;
   token: (where?: TokenWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
@@ -40,25 +40,27 @@ export interface Prisma {
    * Queries
    */
 
-  claim: (where: ClaimWhereUniqueInput) => ClaimNullablePromise;
-  claims: (args?: {
-    where?: ClaimWhereInput;
-    orderBy?: ClaimOrderByInput;
+  contactUsMessage: (
+    where: ContactUsMessageWhereUniqueInput
+  ) => ContactUsMessageNullablePromise;
+  contactUsMessages: (args?: {
+    where?: ContactUsMessageWhereInput;
+    orderBy?: ContactUsMessageOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Claim>;
-  claimsConnection: (args?: {
-    where?: ClaimWhereInput;
-    orderBy?: ClaimOrderByInput;
+  }) => FragmentableArray<ContactUsMessage>;
+  contactUsMessagesConnection: (args?: {
+    where?: ContactUsMessageWhereInput;
+    orderBy?: ContactUsMessageOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => ClaimConnectionPromise;
+  }) => ContactUsMessageConnectionPromise;
   token: (where: TokenWhereUniqueInput) => TokenNullablePromise;
   tokens: (args?: {
     where?: TokenWhereInput;
@@ -103,22 +105,28 @@ export interface Prisma {
    * Mutations
    */
 
-  createClaim: (data: ClaimCreateInput) => ClaimPromise;
-  updateClaim: (args: {
-    data: ClaimUpdateInput;
-    where: ClaimWhereUniqueInput;
-  }) => ClaimPromise;
-  updateManyClaims: (args: {
-    data: ClaimUpdateManyMutationInput;
-    where?: ClaimWhereInput;
+  createContactUsMessage: (
+    data: ContactUsMessageCreateInput
+  ) => ContactUsMessagePromise;
+  updateContactUsMessage: (args: {
+    data: ContactUsMessageUpdateInput;
+    where: ContactUsMessageWhereUniqueInput;
+  }) => ContactUsMessagePromise;
+  updateManyContactUsMessages: (args: {
+    data: ContactUsMessageUpdateManyMutationInput;
+    where?: ContactUsMessageWhereInput;
   }) => BatchPayloadPromise;
-  upsertClaim: (args: {
-    where: ClaimWhereUniqueInput;
-    create: ClaimCreateInput;
-    update: ClaimUpdateInput;
-  }) => ClaimPromise;
-  deleteClaim: (where: ClaimWhereUniqueInput) => ClaimPromise;
-  deleteManyClaims: (where?: ClaimWhereInput) => BatchPayloadPromise;
+  upsertContactUsMessage: (args: {
+    where: ContactUsMessageWhereUniqueInput;
+    create: ContactUsMessageCreateInput;
+    update: ContactUsMessageUpdateInput;
+  }) => ContactUsMessagePromise;
+  deleteContactUsMessage: (
+    where: ContactUsMessageWhereUniqueInput
+  ) => ContactUsMessagePromise;
+  deleteManyContactUsMessages: (
+    where?: ContactUsMessageWhereInput
+  ) => BatchPayloadPromise;
   createToken: (data: TokenCreateInput) => TokenPromise;
   updateToken: (args: {
     data: TokenUpdateInput;
@@ -160,9 +168,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  claim: (
-    where?: ClaimSubscriptionWhereInput
-  ) => ClaimSubscriptionPayloadSubscription;
+  contactUsMessage: (
+    where?: ContactUsMessageSubscriptionWhereInput
+  ) => ContactUsMessageSubscriptionPayloadSubscription;
   token: (
     where?: TokenSubscriptionWhereInput
   ) => TokenSubscriptionPayloadSubscription;
@@ -187,13 +195,15 @@ export type UserRole = "ADMIN" | "STAFF" | "SIMPLE";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export type ClaimOrderByInput =
+export type ContactUsMessageOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "title_ASC"
-  | "title_DESC"
-  | "content_ASC"
-  | "content_DESC"
+  | "fullName_ASC"
+  | "fullName_DESC"
+  | "subject_ASC"
+  | "subject_DESC"
+  | "message_ASC"
+  | "message_DESC"
   | "email_ASC"
   | "email_DESC";
 
@@ -253,7 +263,7 @@ export interface TokenUpdateInput {
   value?: Maybe<String>;
 }
 
-export type ClaimWhereUniqueInput = AtLeastOne<{
+export type ContactUsMessageWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -442,7 +452,7 @@ export interface TokenUpdateManyMutationInput {
   value?: Maybe<String>;
 }
 
-export interface ClaimWhereInput {
+export interface ContactUsMessageWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -457,34 +467,48 @@ export interface ClaimWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  content?: Maybe<String>;
-  content_not?: Maybe<String>;
-  content_in?: Maybe<String[] | String>;
-  content_not_in?: Maybe<String[] | String>;
-  content_lt?: Maybe<String>;
-  content_lte?: Maybe<String>;
-  content_gt?: Maybe<String>;
-  content_gte?: Maybe<String>;
-  content_contains?: Maybe<String>;
-  content_not_contains?: Maybe<String>;
-  content_starts_with?: Maybe<String>;
-  content_not_starts_with?: Maybe<String>;
-  content_ends_with?: Maybe<String>;
-  content_not_ends_with?: Maybe<String>;
+  fullName?: Maybe<String>;
+  fullName_not?: Maybe<String>;
+  fullName_in?: Maybe<String[] | String>;
+  fullName_not_in?: Maybe<String[] | String>;
+  fullName_lt?: Maybe<String>;
+  fullName_lte?: Maybe<String>;
+  fullName_gt?: Maybe<String>;
+  fullName_gte?: Maybe<String>;
+  fullName_contains?: Maybe<String>;
+  fullName_not_contains?: Maybe<String>;
+  fullName_starts_with?: Maybe<String>;
+  fullName_not_starts_with?: Maybe<String>;
+  fullName_ends_with?: Maybe<String>;
+  fullName_not_ends_with?: Maybe<String>;
+  subject?: Maybe<String>;
+  subject_not?: Maybe<String>;
+  subject_in?: Maybe<String[] | String>;
+  subject_not_in?: Maybe<String[] | String>;
+  subject_lt?: Maybe<String>;
+  subject_lte?: Maybe<String>;
+  subject_gt?: Maybe<String>;
+  subject_gte?: Maybe<String>;
+  subject_contains?: Maybe<String>;
+  subject_not_contains?: Maybe<String>;
+  subject_starts_with?: Maybe<String>;
+  subject_not_starts_with?: Maybe<String>;
+  subject_ends_with?: Maybe<String>;
+  subject_not_ends_with?: Maybe<String>;
+  message?: Maybe<String>;
+  message_not?: Maybe<String>;
+  message_in?: Maybe<String[] | String>;
+  message_not_in?: Maybe<String[] | String>;
+  message_lt?: Maybe<String>;
+  message_lte?: Maybe<String>;
+  message_gt?: Maybe<String>;
+  message_gte?: Maybe<String>;
+  message_contains?: Maybe<String>;
+  message_not_contains?: Maybe<String>;
+  message_starts_with?: Maybe<String>;
+  message_not_starts_with?: Maybe<String>;
+  message_ends_with?: Maybe<String>;
+  message_not_ends_with?: Maybe<String>;
   email?: Maybe<String>;
   email_not?: Maybe<String>;
   email_in?: Maybe<String[] | String>;
@@ -499,9 +523,9 @@ export interface ClaimWhereInput {
   email_not_starts_with?: Maybe<String>;
   email_ends_with?: Maybe<String>;
   email_not_ends_with?: Maybe<String>;
-  AND?: Maybe<ClaimWhereInput[] | ClaimWhereInput>;
-  OR?: Maybe<ClaimWhereInput[] | ClaimWhereInput>;
-  NOT?: Maybe<ClaimWhereInput[] | ClaimWhereInput>;
+  AND?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
+  OR?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
+  NOT?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
 }
 
 export type TokenWhereUniqueInput = AtLeastOne<{
@@ -571,15 +595,24 @@ export interface TokenCreateInput {
   value: String;
 }
 
-export interface ClaimSubscriptionWhereInput {
+export interface ContactUsMessageSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<ClaimWhereInput>;
-  AND?: Maybe<ClaimSubscriptionWhereInput[] | ClaimSubscriptionWhereInput>;
-  OR?: Maybe<ClaimSubscriptionWhereInput[] | ClaimSubscriptionWhereInput>;
-  NOT?: Maybe<ClaimSubscriptionWhereInput[] | ClaimSubscriptionWhereInput>;
+  node?: Maybe<ContactUsMessageWhereInput>;
+  AND?: Maybe<
+    | ContactUsMessageSubscriptionWhereInput[]
+    | ContactUsMessageSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | ContactUsMessageSubscriptionWhereInput[]
+    | ContactUsMessageSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | ContactUsMessageSubscriptionWhereInput[]
+    | ContactUsMessageSubscriptionWhereInput
+  >;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
@@ -593,22 +626,25 @@ export interface UserUpsertNestedInput {
   create: UserCreateInput;
 }
 
-export interface ClaimCreateInput {
+export interface ContactUsMessageCreateInput {
   id?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  content: String;
+  fullName?: Maybe<String>;
+  subject?: Maybe<String>;
+  message: String;
   email: String;
 }
 
-export interface ClaimUpdateInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
+export interface ContactUsMessageUpdateInput {
+  fullName?: Maybe<String>;
+  subject?: Maybe<String>;
+  message?: Maybe<String>;
   email?: Maybe<String>;
 }
 
-export interface ClaimUpdateManyMutationInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
+export interface ContactUsMessageUpdateManyMutationInput {
+  fullName?: Maybe<String>;
+  subject?: Maybe<String>;
+  message?: Maybe<String>;
   email?: Maybe<String>;
 }
 
@@ -736,20 +772,22 @@ export interface UserEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ClaimEdge {
-  node: Claim;
+export interface ContactUsMessageEdge {
+  node: ContactUsMessage;
   cursor: String;
 }
 
-export interface ClaimEdgePromise extends Promise<ClaimEdge>, Fragmentable {
-  node: <T = ClaimPromise>() => T;
+export interface ContactUsMessageEdgePromise
+  extends Promise<ContactUsMessageEdge>,
+    Fragmentable {
+  node: <T = ContactUsMessagePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface ClaimEdgeSubscription
-  extends Promise<AsyncIterator<ClaimEdge>>,
+export interface ContactUsMessageEdgeSubscription
+  extends Promise<AsyncIterator<ContactUsMessageEdge>>,
     Fragmentable {
-  node: <T = ClaimSubscription>() => T;
+  node: <T = ContactUsMessageSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
@@ -860,35 +898,41 @@ export interface UserConnectionSubscription
   aggregate: <T = AggregateUserSubscription>() => T;
 }
 
-export interface Claim {
+export interface ContactUsMessage {
   id: ID_Output;
-  title?: String;
-  content: String;
+  fullName?: String;
+  subject?: String;
+  message: String;
   email: String;
 }
 
-export interface ClaimPromise extends Promise<Claim>, Fragmentable {
+export interface ContactUsMessagePromise
+  extends Promise<ContactUsMessage>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
+  fullName: () => Promise<String>;
+  subject: () => Promise<String>;
+  message: () => Promise<String>;
   email: () => Promise<String>;
 }
 
-export interface ClaimSubscription
-  extends Promise<AsyncIterator<Claim>>,
+export interface ContactUsMessageSubscription
+  extends Promise<AsyncIterator<ContactUsMessage>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
+  fullName: () => Promise<AsyncIterator<String>>;
+  subject: () => Promise<AsyncIterator<String>>;
+  message: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ClaimNullablePromise
-  extends Promise<Claim | null>,
+export interface ContactUsMessageNullablePromise
+  extends Promise<ContactUsMessage | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
+  fullName: () => Promise<String>;
+  subject: () => Promise<String>;
+  message: () => Promise<String>;
   email: () => Promise<String>;
 }
 
@@ -1085,54 +1129,57 @@ export interface UserNullablePromise
   image: () => Promise<String>;
 }
 
-export interface ClaimPreviousValues {
+export interface ContactUsMessagePreviousValues {
   id: ID_Output;
-  title?: String;
-  content: String;
+  fullName?: String;
+  subject?: String;
+  message: String;
   email: String;
 }
 
-export interface ClaimPreviousValuesPromise
-  extends Promise<ClaimPreviousValues>,
+export interface ContactUsMessagePreviousValuesPromise
+  extends Promise<ContactUsMessagePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
+  fullName: () => Promise<String>;
+  subject: () => Promise<String>;
+  message: () => Promise<String>;
   email: () => Promise<String>;
 }
 
-export interface ClaimPreviousValuesSubscription
-  extends Promise<AsyncIterator<ClaimPreviousValues>>,
+export interface ContactUsMessagePreviousValuesSubscription
+  extends Promise<AsyncIterator<ContactUsMessagePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
+  fullName: () => Promise<AsyncIterator<String>>;
+  subject: () => Promise<AsyncIterator<String>>;
+  message: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ClaimSubscriptionPayload {
+export interface ContactUsMessageSubscriptionPayload {
   mutation: MutationType;
-  node: Claim;
+  node: ContactUsMessage;
   updatedFields: String[];
-  previousValues: ClaimPreviousValues;
+  previousValues: ContactUsMessagePreviousValues;
 }
 
-export interface ClaimSubscriptionPayloadPromise
-  extends Promise<ClaimSubscriptionPayload>,
+export interface ContactUsMessageSubscriptionPayloadPromise
+  extends Promise<ContactUsMessageSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = ClaimPromise>() => T;
+  node: <T = ContactUsMessagePromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = ClaimPreviousValuesPromise>() => T;
+  previousValues: <T = ContactUsMessagePreviousValuesPromise>() => T;
 }
 
-export interface ClaimSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ClaimSubscriptionPayload>>,
+export interface ContactUsMessageSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ContactUsMessageSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ClaimSubscription>() => T;
+  node: <T = ContactUsMessageSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ClaimPreviousValuesSubscription>() => T;
+  previousValues: <T = ContactUsMessagePreviousValuesSubscription>() => T;
 }
 
 export interface TokenPreviousValues {
@@ -1160,25 +1207,25 @@ export interface TokenPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface ClaimConnection {
+export interface ContactUsMessageConnection {
   pageInfo: PageInfo;
-  edges: ClaimEdge[];
+  edges: ContactUsMessageEdge[];
 }
 
-export interface ClaimConnectionPromise
-  extends Promise<ClaimConnection>,
+export interface ContactUsMessageConnectionPromise
+  extends Promise<ContactUsMessageConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ClaimEdge>>() => T;
-  aggregate: <T = AggregateClaimPromise>() => T;
+  edges: <T = FragmentableArray<ContactUsMessageEdge>>() => T;
+  aggregate: <T = AggregateContactUsMessagePromise>() => T;
 }
 
-export interface ClaimConnectionSubscription
-  extends Promise<AsyncIterator<ClaimConnection>>,
+export interface ContactUsMessageConnectionSubscription
+  extends Promise<AsyncIterator<ContactUsMessageConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ClaimEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateClaimSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ContactUsMessageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateContactUsMessageSubscription>() => T;
 }
 
 export interface Token {
@@ -1258,18 +1305,18 @@ export interface TokenEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateClaim {
+export interface AggregateContactUsMessage {
   count: Int;
 }
 
-export interface AggregateClaimPromise
-  extends Promise<AggregateClaim>,
+export interface AggregateContactUsMessagePromise
+  extends Promise<AggregateContactUsMessage>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateClaimSubscription
-  extends Promise<AsyncIterator<AggregateClaim>>,
+export interface AggregateContactUsMessageSubscription
+  extends Promise<AsyncIterator<AggregateContactUsMessage>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -1321,7 +1368,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Claim",
+    name: "ContactUsMessage",
     embedded: false
   },
   {

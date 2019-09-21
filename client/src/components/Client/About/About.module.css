@@ -1,0 +1,11 @@
+.aboutLink:hover {
+  text-decoration: none;
+  color: #007bff !important;
+}
+.aboutLink:active {
+  text-decoration: none;
+  color: #007bff !important;
+}
+.aboutLink {
+  text-decoration: none;
+}

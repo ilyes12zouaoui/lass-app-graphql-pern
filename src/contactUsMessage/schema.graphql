@@ -1,0 +1,36 @@
+type Query {
+  contactUsMessages(
+    where: ContactUsMessageWhereInput
+    orderBy: ContactUsMessageOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [ContactUsMessage]!
+}
+
+type Mutation {
+  createContactUsMessage(data: CreateContactUsMessageInput!): ContactUsMessage!
+  updateContactUsMessage(
+    where: ContactUsMessageWhereUniqueInput!
+    data: UpdateContactUsMessageInput!
+  ): ContactUsMessage
+  deleteContactUsMessage(
+    where: ContactUsMessageWhereUniqueInput!
+  ): ContactUsMessage
+}
+
+input CreateContactUsMessageInput {
+  fullName: String
+  email: String!
+  message: String!
+  subject: String
+}
+
+input UpdateContactUsMessageInput {
+  fullName: String
+  email: String!
+  message: String!
+  subject: String
+}

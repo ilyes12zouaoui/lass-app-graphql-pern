@@ -1,0 +1,11 @@
+.profile-information-lane {
+  display: flex;
+  align-items: center;
+  max-width: 450px;
+  height: 46px;
+}
+
+.profile-information-lane-span {
+  color: #777;
+  margin-left: 8px;
+}

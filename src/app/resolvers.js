@@ -5,6 +5,7 @@ let resolvers = {};
 
 mergerByNameFunction(resolvers, "authentication");
 mergerByNameFunction(resolvers, "user");
+mergerByNameFunction(resolvers, "contactUsMessage");
 
 // mergerByNameFunction(resolvers, "myTest");
 

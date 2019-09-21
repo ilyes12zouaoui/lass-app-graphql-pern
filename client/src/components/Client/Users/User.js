@@ -12,7 +12,7 @@ const FormLayout = ({ user, isOwner = false }) => {
         <Col
           lg={{ span: 5 }}
           md={{ span: 5 }}
-          sm={{ span: 5 }}
+          sm={{ span: 12 }}
           xs={{ span: 12 }}
           className="p-0 "
         >
@@ -21,7 +21,7 @@ const FormLayout = ({ user, isOwner = false }) => {
         <Col
           lg={{ span: 7 }}
           md={{ span: 7 }}
-          sm={{ span: 7 }}
+          sm={{ span: 12 }}
           xs={{ span: 12 }}
           className="p-sm-5 p-4"
         >

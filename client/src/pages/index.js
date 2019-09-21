@@ -3,6 +3,8 @@ export { default as InscriptionPage } from "./inscription";
 export { default as LoginPage } from "./login";
 export { default as AccountActivationPage } from "./account-activation";
 export { default as ResetPassword } from "./reset-password";
+export { default as ContactUs } from "./contact-us";
+export { default as About } from "./about";
 export {
   default as ResendResetPasswordEmail
 } from "./resend-reset-password-email";

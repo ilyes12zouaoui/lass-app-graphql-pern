@@ -1,0 +1,17 @@
+.update-button {
+  border: none;
+  color: white;
+  background-color: #22aeff70;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  max-height: 50%;
+  height: 100px;
+  width: 100%;
+  padding: 13px;
+  font-size: 14px;
+  /* width: 120px; */
+}
+.update-button:hover {
+  background-color: #22aeffaa;
+}

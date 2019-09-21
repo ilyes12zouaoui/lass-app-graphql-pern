@@ -14,7 +14,9 @@ import {
   PageNotFound,
   AccountActivationPage,
   ResetPassword,
-  ResendResetPasswordEmail
+  ResendResetPasswordEmail,
+  ContactUs,
+  About
 } from "../pages";
 export const CommunRoutes = [
   <Route
@@ -32,6 +34,25 @@ export const CommunRoutes = [
     render={() => (
       <ClientLayout>
         <ResendResetPasswordEmail />
+      </ClientLayout>
+    )}
+  />,
+  <Route
+    path="/contact-us"
+    exact
+    render={() => (
+      <ClientLayout>
+        <ContactUs />
+      </ClientLayout>
+    )}
+  />,
+
+  <Route
+    path="/about"
+    exact
+    render={() => (
+      <ClientLayout>
+        <About />
       </ClientLayout>
     )}
   />,

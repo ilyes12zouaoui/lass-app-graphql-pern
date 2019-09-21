@@ -27,10 +27,11 @@ type Token {
   createdAt: DateTime! @createdAt
 }
 
-type Claim {
+type ContactUsMessage {
   id: ID! @id
-  title: String
-  content: String!
+  fullName: String
+  subject: String
+  message: String!
   email: String!
 }
 

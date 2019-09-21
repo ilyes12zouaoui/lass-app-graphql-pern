@@ -24,6 +24,7 @@ const Informations = ({
   return (
     <div>
       <h1 className="color-blue">{`${firstName} ${lastName}`}</h1>
+      <hr />
       <div className={style["profile-information-lane"]}>
         <FontAwesomeIcon icon={faEnvelope} className="color-blue" size="lg" />
         <span className={style["profile-information-lane-span"]}>{email}</span>
@@ -62,6 +63,7 @@ const Informations = ({
           {address ? address : "not provided by the user"}
         </span>
       </div>
+
       {isOwner ? <Update /> : null}
     </div>
   );

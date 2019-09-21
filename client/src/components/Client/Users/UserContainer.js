@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import _ from "lodash";
 const UserContainer = ({ match }) => {
   const id = match.params.id;
-  const user = useSelector(state => {
+  let user = useSelector(state => {
     return state.authentication.user;
   }, _.isEqual);
 

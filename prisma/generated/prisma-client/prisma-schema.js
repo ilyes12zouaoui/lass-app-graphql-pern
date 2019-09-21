@@ -3,7 +3,7 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateClaim {
+/* GraphQL */ `type AggregateContactUsMessage {
   count: Int!
 }
 
@@ -19,80 +19,87 @@ type BatchPayload {
   count: Long!
 }
 
-type Claim {
+type ContactUsMessage {
   id: ID!
-  title: String
-  content: String!
+  fullName: String
+  subject: String
+  message: String!
   email: String!
 }
 
-type ClaimConnection {
+type ContactUsMessageConnection {
   pageInfo: PageInfo!
-  edges: [ClaimEdge]!
-  aggregate: AggregateClaim!
+  edges: [ContactUsMessageEdge]!
+  aggregate: AggregateContactUsMessage!
 }
 
-input ClaimCreateInput {
+input ContactUsMessageCreateInput {
   id: ID
-  title: String
-  content: String!
+  fullName: String
+  subject: String
+  message: String!
   email: String!
 }
 
-type ClaimEdge {
-  node: Claim!
+type ContactUsMessageEdge {
+  node: ContactUsMessage!
   cursor: String!
 }
 
-enum ClaimOrderByInput {
+enum ContactUsMessageOrderByInput {
   id_ASC
   id_DESC
-  title_ASC
-  title_DESC
-  content_ASC
-  content_DESC
+  fullName_ASC
+  fullName_DESC
+  subject_ASC
+  subject_DESC
+  message_ASC
+  message_DESC
   email_ASC
   email_DESC
 }
 
-type ClaimPreviousValues {
+type ContactUsMessagePreviousValues {
   id: ID!
-  title: String
-  content: String!
+  fullName: String
+  subject: String
+  message: String!
   email: String!
 }
 
-type ClaimSubscriptionPayload {
+type ContactUsMessageSubscriptionPayload {
   mutation: MutationType!
-  node: Claim
+  node: ContactUsMessage
   updatedFields: [String!]
-  previousValues: ClaimPreviousValues
+  previousValues: ContactUsMessagePreviousValues
 }
 
-input ClaimSubscriptionWhereInput {
+input ContactUsMessageSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: ClaimWhereInput
-  AND: [ClaimSubscriptionWhereInput!]
-  OR: [ClaimSubscriptionWhereInput!]
-  NOT: [ClaimSubscriptionWhereInput!]
+  node: ContactUsMessageWhereInput
+  AND: [ContactUsMessageSubscriptionWhereInput!]
+  OR: [ContactUsMessageSubscriptionWhereInput!]
+  NOT: [ContactUsMessageSubscriptionWhereInput!]
 }
 
-input ClaimUpdateInput {
-  title: String
-  content: String
+input ContactUsMessageUpdateInput {
+  fullName: String
+  subject: String
+  message: String
   email: String
 }
 
-input ClaimUpdateManyMutationInput {
-  title: String
-  content: String
+input ContactUsMessageUpdateManyMutationInput {
+  fullName: String
+  subject: String
+  message: String
   email: String
 }
 
-input ClaimWhereInput {
+input ContactUsMessageWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -107,34 +114,48 @@ input ClaimWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  title: String
-  title_not: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_lt: String
-  title_lte: String
-  title_gt: String
-  title_gte: String
-  title_contains: String
-  title_not_contains: String
-  title_starts_with: String
-  title_not_starts_with: String
-  title_ends_with: String
-  title_not_ends_with: String
-  content: String
-  content_not: String
-  content_in: [String!]
-  content_not_in: [String!]
-  content_lt: String
-  content_lte: String
-  content_gt: String
-  content_gte: String
-  content_contains: String
-  content_not_contains: String
-  content_starts_with: String
-  content_not_starts_with: String
-  content_ends_with: String
-  content_not_ends_with: String
+  fullName: String
+  fullName_not: String
+  fullName_in: [String!]
+  fullName_not_in: [String!]
+  fullName_lt: String
+  fullName_lte: String
+  fullName_gt: String
+  fullName_gte: String
+  fullName_contains: String
+  fullName_not_contains: String
+  fullName_starts_with: String
+  fullName_not_starts_with: String
+  fullName_ends_with: String
+  fullName_not_ends_with: String
+  subject: String
+  subject_not: String
+  subject_in: [String!]
+  subject_not_in: [String!]
+  subject_lt: String
+  subject_lte: String
+  subject_gt: String
+  subject_gte: String
+  subject_contains: String
+  subject_not_contains: String
+  subject_starts_with: String
+  subject_not_starts_with: String
+  subject_ends_with: String
+  subject_not_ends_with: String
+  message: String
+  message_not: String
+  message_in: [String!]
+  message_not_in: [String!]
+  message_lt: String
+  message_lte: String
+  message_gt: String
+  message_gte: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -149,12 +170,12 @@ input ClaimWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
-  AND: [ClaimWhereInput!]
-  OR: [ClaimWhereInput!]
-  NOT: [ClaimWhereInput!]
+  AND: [ContactUsMessageWhereInput!]
+  OR: [ContactUsMessageWhereInput!]
+  NOT: [ContactUsMessageWhereInput!]
 }
 
-input ClaimWhereUniqueInput {
+input ContactUsMessageWhereUniqueInput {
   id: ID
 }
 
@@ -163,12 +184,12 @@ scalar DateTime
 scalar Long
 
 type Mutation {
-  createClaim(data: ClaimCreateInput!): Claim!
-  updateClaim(data: ClaimUpdateInput!, where: ClaimWhereUniqueInput!): Claim
-  updateManyClaims(data: ClaimUpdateManyMutationInput!, where: ClaimWhereInput): BatchPayload!
-  upsertClaim(where: ClaimWhereUniqueInput!, create: ClaimCreateInput!, update: ClaimUpdateInput!): Claim!
-  deleteClaim(where: ClaimWhereUniqueInput!): Claim
-  deleteManyClaims(where: ClaimWhereInput): BatchPayload!
+  createContactUsMessage(data: ContactUsMessageCreateInput!): ContactUsMessage!
+  updateContactUsMessage(data: ContactUsMessageUpdateInput!, where: ContactUsMessageWhereUniqueInput!): ContactUsMessage
+  updateManyContactUsMessages(data: ContactUsMessageUpdateManyMutationInput!, where: ContactUsMessageWhereInput): BatchPayload!
+  upsertContactUsMessage(where: ContactUsMessageWhereUniqueInput!, create: ContactUsMessageCreateInput!, update: ContactUsMessageUpdateInput!): ContactUsMessage!
+  deleteContactUsMessage(where: ContactUsMessageWhereUniqueInput!): ContactUsMessage
+  deleteManyContactUsMessages(where: ContactUsMessageWhereInput): BatchPayload!
   createToken(data: TokenCreateInput!): Token!
   updateToken(data: TokenUpdateInput!, where: TokenWhereUniqueInput!): Token
   updateManyTokens(data: TokenUpdateManyMutationInput!, where: TokenWhereInput): BatchPayload!
@@ -201,9 +222,9 @@ type PageInfo {
 }
 
 type Query {
-  claim(where: ClaimWhereUniqueInput!): Claim
-  claims(where: ClaimWhereInput, orderBy: ClaimOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Claim]!
-  claimsConnection(where: ClaimWhereInput, orderBy: ClaimOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClaimConnection!
+  contactUsMessage(where: ContactUsMessageWhereUniqueInput!): ContactUsMessage
+  contactUsMessages(where: ContactUsMessageWhereInput, orderBy: ContactUsMessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ContactUsMessage]!
+  contactUsMessagesConnection(where: ContactUsMessageWhereInput, orderBy: ContactUsMessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ContactUsMessageConnection!
   token(where: TokenWhereUniqueInput!): Token
   tokens(where: TokenWhereInput, orderBy: TokenOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Token]!
   tokensConnection(where: TokenWhereInput, orderBy: TokenOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TokenConnection!
@@ -220,7 +241,7 @@ enum SexeType {
 }
 
 type Subscription {
-  claim(where: ClaimSubscriptionWhereInput): ClaimSubscriptionPayload
+  contactUsMessage(where: ContactUsMessageSubscriptionWhereInput): ContactUsMessageSubscriptionPayload
   token(where: TokenSubscriptionWhereInput): TokenSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }

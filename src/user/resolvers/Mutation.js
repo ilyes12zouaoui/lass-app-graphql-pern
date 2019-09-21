@@ -31,18 +31,18 @@ module.exports = {
     });
     return true;
   },
-  updateProfilePicture: async (parent, { data, file }, { prisma, req }) => {
+  updateProfilePicture: async (parent, { data }, { prisma, req }) => {
     if (!req.user) throw new Error("you are not authenticated !");
-    const { createReadStream, filename, mimetype, encoding } = await file;
+    const { createReadStream, filename, mimetype, encoding } = await data;
 
     const stream = createReadStream();
     //saving image and generating unique
     let newFileName = await updateFile(
       req.user.image,
-      "user",
+      "users",
       stream,
       filename,
-      "user"
+      "users"
     );
     const user = await prisma.updateUser({
       where: { id: req.user.id },
