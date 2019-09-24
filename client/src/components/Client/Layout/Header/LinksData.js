@@ -18,13 +18,13 @@ export const CommunLinksRight = {
   links: [
     { title: "About", to: "/about" },
     { title: "Contact Us", to: "/contact-us" }
-  ],
-  dropDowns: [
-    {
-      title: "Test",
-      linksList: [{ title: "test1", to: "/users/1" }]
-    }
   ]
+  // dropDowns: [
+  //   {
+  //     title: "Test",
+  //     linksList: [{ title: "test1", to: "/users/1" }]
+  //   }
+  // ]
 };
 export const UnAuthenticatedUserOnly = {
   links: [

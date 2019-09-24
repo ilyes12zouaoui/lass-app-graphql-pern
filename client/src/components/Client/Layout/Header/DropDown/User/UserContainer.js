@@ -1,9 +1,9 @@
 import React from "react";
 import ToggleSection from "./ToggleSection";
 import { ThunkDisconnectUser } from "../../../../../../store/authentication/actions";
-import { SimpleUserLinks } from "./LinksData";
+import { SimpleUserLinks, AdminLinks, StaffLinks } from "./LinksData";
 import DropDown from "../DropDown";
-import { SIMPLE, ADMIN } from "../../../../../../configs/userRoles";
+import { SIMPLE, ADMIN, STAFF } from "../../../../../../configs/userRoles";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
@@ -21,8 +21,10 @@ const UserContainer = props => {
   let linksList = [];
   if (user.role == SIMPLE) {
     linksList = SimpleUserLinks(user.id, onLogout);
+  } else if (user.role == STAFF) {
+    linksList = StaffLinks(user.id, onLogout);
   } else if (user.role == ADMIN) {
-    linksList = SimpleUserLinks(user.id, onLogout);
+    linksList = AdminLinks(user.id, onLogout);
   }
   // console.log("fullname :", fullName, " src:", src, "list : ", linksList);
 

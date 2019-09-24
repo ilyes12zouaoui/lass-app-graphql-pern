@@ -6,16 +6,13 @@ const FormLayout = ({ title, ...props }) => {
       {/* <div style={{ width: "70%", minWidth: "300px" }} className="fly-box"> */}
       <Row>
         <Col
-          lg={{ offset: 2, span: 8 }}
-          md={{ offset: 2, span: 8 }}
+          lg={{ offset: 3, span: 6 }}
+          md={{ offset: 3, span: 6 }}
           sm={{ offset: 2, span: 8 }}
           xs={{ offset: 1, span: 10 }}
           className="fly-box p-sm-5 p-4"
         >
-          <h1
-            className="display-4 pb-2 color-blue"
-            style={{ fontSize: "40px" }}
-          >
+          <h1 className=" color-blue" style={{ fontSize: "24px" }}>
             {title || ""}
           </h1>
           <hr className="mb-4 mt-4" />

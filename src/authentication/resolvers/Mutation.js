@@ -70,7 +70,7 @@ module.exports = {
 
     const user = await prisma.createUser(createUserData);
 
-    //creating the user
+    //creating the admin
     return user;
   },
   loginUser: async (parent, { data }, { prisma, req }) => {
@@ -90,7 +90,7 @@ module.exports = {
 
     if (user.isBanned)
       throw new Error(
-        "you're account is banned, you my send a claim at the contact page to unban your account by an administrator"
+        "you are banned, you may send a message at the contact us page"
       );
 
     user = await prisma.updateUser({

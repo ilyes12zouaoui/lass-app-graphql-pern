@@ -19,3 +19,6 @@ export { default as UserPage } from "./users/[id]";
 export { default as AdminHome } from "./admin/home";
 //admin users
 export { default as AdminUsers } from "./admin/users";
+export { default as AdminUser } from "./admin/users/[id]";
+
+export { default as AdminContactUsMessages } from "./admin/contact-us-messages";

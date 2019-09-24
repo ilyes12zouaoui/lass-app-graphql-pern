@@ -8,7 +8,8 @@ const Layout = props => {
       <Header />
       <main
         style={{
-          backgroundColor: "rgb(246, 247, 247)"
+          backgroundColor: "rgb(246, 247, 247)",
+          minHeight: "85vh"
         }}
       >
         {props.children || "empty main"}

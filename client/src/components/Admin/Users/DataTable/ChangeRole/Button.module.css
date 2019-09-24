@@ -1,0 +1,19 @@
+.changeButton {
+  border: none;
+
+  width: 175px;
+  color: #fff;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 30px;
+  margin-bottom: 25px;
+}
+
+.changeButton:hover {
+  border: none;
+  color: #fff;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 30px;
+  margin-right: 10px;
+}

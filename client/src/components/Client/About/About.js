@@ -10,20 +10,29 @@ import style from "./About.module.css";
 import { Link } from "react-router-dom";
 const FormLayout = () => {
   return (
-    <Container className="pt-5 pb-5">
+    <Container className="pt-5 pb-5" style={{ maxWidth: "700px" }}>
       {/* <div style={{ width: "70%", minWidth: "300px" }} className="fly-box"> */}
       <Row className="fly-box">
         <Col
-          //   lg={{ offset: 3, span: 6 }}
-          //   md={{ offset: 2, span: 8 }}
-          //   sm={{ offset: 1, span: 10 }}
-          xs={{ span: 12 }}
+          // lg={{ offset: 3, span: 6 }}
+          // md={{ offset: 3, span: 6 }}
+          // sm={{ offset: 2, span: 8 }}
+          // xs={{ offset: 1, span: 10 }}
           className="p-sm-5 p-4"
         >
           <div>
-            <h1 className="color-blue text-center">About</h1>
+            <h1 className="color-blue text-center" style={{ fontSize: "24px" }}>
+              About
+            </h1>
             <hr />
-            <p style={{ color: "#777" }}>
+            <p
+              style={{
+                color: "#666",
+                fontSize: "14px",
+                // fontWeight: "500",
+                lineHeight: "22px"
+              }}
+            >
               Hello javascripters ! , my name is Ilyes Zouaoui i'm very
               passionate about web development and javascript technologies, to
               me web development and information technology is more then just a
@@ -36,7 +45,14 @@ const FormLayout = () => {
               love it, creating beautiful user interface and efficent algorithms
               make me feel happy everytime.
             </p>
-            <p style={{ color: "#777" }}>
+            <p
+              style={{
+                color: "#666",
+                fontSize: "14px",
+                // fontWeight: "500",
+                lineHeight: "22px"
+              }}
+            >
               Currenlty i'm a software engeeniring student at{" "}
               <a
                 className={style.aboutLink}

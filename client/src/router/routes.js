@@ -16,7 +16,9 @@ import {
   ResetPassword,
   ResendResetPasswordEmail,
   ContactUs,
-  About
+  About,
+  AdminContactUsMessages,
+  AdminUser
 } from "../pages";
 export const CommunRoutes = [
   <Route
@@ -107,6 +109,15 @@ export const UnAuthenticatedUserOnly = [
 ];
 export const AuthenticatedAdminOnly = [
   <Route
+    path="/admin/users/:id"
+    exact
+    render={props => (
+      <AdminLayout>
+        <AdminUser {...props} />
+      </AdminLayout>
+    )}
+  />,
+  <Route
     path="/admin"
     exact
     render={() => (
@@ -121,6 +132,15 @@ export const AuthenticatedAdminOnly = [
     render={() => (
       <AdminLayout>
         <AdminUsers />
+      </AdminLayout>
+    )}
+  />,
+  <Route
+    path="/admin/contact-us-messages"
+    exact
+    render={() => (
+      <AdminLayout>
+        <AdminContactUsMessages />
       </AdminLayout>
     )}
   />

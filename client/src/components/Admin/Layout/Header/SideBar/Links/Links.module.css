@@ -1,0 +1,19 @@
+.link {
+  transition: all 0.4s;
+  color: #777;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+.link:hover {
+  color: #fff;
+  background-color: #ff004ecc;
+  text-decoration: none;
+}
+
+.link:active {
+  color: #fff;
+  background-color: #ff004ecc;
+  text-decoration: none;
+}

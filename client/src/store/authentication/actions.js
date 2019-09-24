@@ -51,7 +51,7 @@ export const ThunkAuthenticateUser = payload => dispatch => {
     if (redirectTo != "") {
       history.push(redirectTo);
     } else if (user.role == "ADMIN") {
-      history.push("/admin/users");
+      history.push("/admin");
     } else {
       history.push(`/users/${user && user.id}`);
     }

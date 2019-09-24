@@ -25,6 +25,8 @@ type ContactUsMessage {
   subject: String
   message: String!
   email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type ContactUsMessageConnection {
@@ -57,6 +59,10 @@ enum ContactUsMessageOrderByInput {
   message_DESC
   email_ASC
   email_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type ContactUsMessagePreviousValues {
@@ -65,6 +71,8 @@ type ContactUsMessagePreviousValues {
   subject: String
   message: String!
   email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type ContactUsMessageSubscriptionPayload {
@@ -170,6 +178,22 @@ input ContactUsMessageWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [ContactUsMessageWhereInput!]
   OR: [ContactUsMessageWhereInput!]
   NOT: [ContactUsMessageWhereInput!]
@@ -377,7 +401,7 @@ input TokenWhereUniqueInput {
 }
 
 type User {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -405,7 +429,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   description: String
   lastLoginTime: DateTime
@@ -435,8 +459,8 @@ type UserEdge {
 }
 
 enum UserOrderByInput {
-  isBaned_ASC
-  isBaned_DESC
+  isBanned_ASC
+  isBanned_DESC
   address_ASC
   address_DESC
   createdAt_ASC
@@ -476,7 +500,7 @@ enum UserOrderByInput {
 }
 
 type UserPreviousValues {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -522,7 +546,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   description: String
   lastLoginTime: DateTime
@@ -541,7 +565,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   description: String
   lastLoginTime: DateTime
@@ -560,7 +584,7 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyMutationInput {
-  isBaned: Boolean
+  isBanned: Boolean
   address: String
   description: String
   lastLoginTime: DateTime
@@ -591,8 +615,8 @@ input UserUpsertNestedInput {
 }
 
 input UserWhereInput {
-  isBaned: Boolean
-  isBaned_not: Boolean
+  isBanned: Boolean
+  isBanned_not: Boolean
   address: String
   address_not: String
   address_in: [String!]

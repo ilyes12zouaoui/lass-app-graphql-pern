@@ -81,7 +81,7 @@ const Login = ({ createContactUsMessage, error, data, loading }) => {
               />
               <Form.Control.Feedback>success</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
-                {errors.fullName}
+                {errors.email}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -121,6 +121,7 @@ const Login = ({ createContactUsMessage, error, data, loading }) => {
             <button
               className="bg-blue button-custom"
               disabled={loading}
+              style={{ marginTop: "15px" }}
               type="submit"
             >
               Send Message

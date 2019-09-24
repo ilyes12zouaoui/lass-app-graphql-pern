@@ -11,24 +11,47 @@ import style from "./Informations.module.css";
 const FormLayout = ({ user, isOwner = false }) => {
   return (
     <>
-      <Container className="pt-5 pb-5">
+      <Container>
         {/* <div style={{ width: "70%", minWidth: "300px" }} className="fly-box"> */}
         <Row>
           <Col
-            lg={{ offset: 2, span: 8 }}
-            md={{ offset: 2, span: 8 }}
+            lg={{ offset: 3, span: 6 }}
+            md={{ offset: 3, span: 6 }}
             sm={{ offset: 2, span: 8 }}
             xs={{ offset: 1, span: 10 }}
             className="fly-box p-sm-5 p-4"
           >
             <div>
-              <h1 className="color-blue">Contact Informations:</h1>
+              <h1 className="color-blue" style={{ fontSize: "24px" }}>
+                Our location:
+              </h1>
+              <hr />
+              <Map />
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container className="pt-5 pb-5">
+        {/* <div style={{ width: "70%", minWidth: "300px" }} className="fly-box"> */}
+        <Row>
+          <Col
+            lg={{ offset: 3, span: 6 }}
+            md={{ offset: 3, span: 6 }}
+            sm={{ offset: 2, span: 8 }}
+            xs={{ offset: 1, span: 10 }}
+            className="fly-box p-sm-5 p-4"
+          >
+            <div>
+              <h1 className="color-blue" style={{ fontSize: "24px" }}>
+                Contact Informations:
+              </h1>
               <hr />
               <div className={style["profile-information-lane"]}>
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="color-blue"
-                  size="lg"
+                  size="1x"
                 />
                 <span className={style["profile-information-lane-span"]}>
                   ilyes.zouaoui@esprit.tn
@@ -39,7 +62,7 @@ const FormLayout = ({ user, isOwner = false }) => {
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="color-blue"
-                  size="lg"
+                  size="1x"
                 />
                 <span className={style["profile-information-lane-span"]}>
                   +216 22 164 740
@@ -49,7 +72,7 @@ const FormLayout = ({ user, isOwner = false }) => {
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   className="color-blue"
-                  size="lg"
+                  size="1x"
                 />
                 <span className={style["profile-information-lane-span"]}>
                   Tunis, Bardo
@@ -59,24 +82,6 @@ const FormLayout = ({ user, isOwner = false }) => {
           </Col>
         </Row>
         {/* </div> */}
-      </Container>
-      <Container className="pt-5 pb-5">
-        {/* <div style={{ width: "70%", minWidth: "300px" }} className="fly-box"> */}
-        <Row>
-          <Col
-            lg={{ offset: 2, span: 8 }}
-            md={{ offset: 2, span: 8 }}
-            sm={{ offset: 2, span: 8 }}
-            xs={{ offset: 1, span: 10 }}
-            className="fly-box p-sm-5 p-4"
-          >
-            <div>
-              <h1 className="color-blue">Our location:</h1>
-              <hr />
-              <Map />
-            </div>
-          </Col>
-        </Row>
       </Container>
     </>
   );

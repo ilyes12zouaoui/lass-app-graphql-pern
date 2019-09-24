@@ -34,8 +34,11 @@ nav.client-header {
 
 nav.client-header a {
   transition: all 0.5s;
-  padding: 8px !important;
-  height: 44px;
+  padding: 6px 12px !important;
+  height: 38px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
   /* color: black !important; */
   font-weight: 500 !important;
   color: #999 !important;
@@ -55,5 +58,5 @@ nav.client-header a.active {
 
 nav.client-header a.client-header-brand {
   /* color: white !important; */
-  font-size: 16px;
+  /* font-size: 16px; */
 }

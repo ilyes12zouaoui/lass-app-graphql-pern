@@ -193,8 +193,6 @@ export type SexeType = "HOMME" | "FEMME" | "AUTRE";
 
 export type UserRole = "ADMIN" | "STAFF" | "SIMPLE";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
-
 export type ContactUsMessageOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -205,7 +203,11 @@ export type ContactUsMessageOrderByInput =
   | "message_ASC"
   | "message_DESC"
   | "email_ASC"
-  | "email_DESC";
+  | "email_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export type TokenOrderByInput =
   | "id_ASC"
@@ -217,9 +219,11 @@ export type TokenOrderByInput =
   | "createdAt_ASC"
   | "createdAt_DESC";
 
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+
 export type UserOrderByInput =
-  | "isBaned_ASC"
-  | "isBaned_DESC"
+  | "isBanned_ASC"
+  | "isBanned_DESC"
   | "address_ASC"
   | "address_DESC"
   | "createdAt_ASC"
@@ -268,8 +272,8 @@ export type ContactUsMessageWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface UserWhereInput {
-  isBaned?: Maybe<Boolean>;
-  isBaned_not?: Maybe<Boolean>;
+  isBanned?: Maybe<Boolean>;
+  isBanned_not?: Maybe<Boolean>;
   address?: Maybe<String>;
   address_not?: Maybe<String>;
   address_in?: Maybe<String[] | String>;
@@ -523,18 +527,48 @@ export interface ContactUsMessageWhereInput {
   email_not_starts_with?: Maybe<String>;
   email_ends_with?: Maybe<String>;
   email_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
   AND?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
   OR?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
   NOT?: Maybe<ContactUsMessageWhereInput[] | ContactUsMessageWhereInput>;
 }
 
-export type TokenWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  value?: Maybe<String>;
-}>;
+export interface UserUpdateDataInput {
+  isBanned?: Maybe<Boolean>;
+  address?: Maybe<String>;
+  description?: Maybe<String>;
+  lastLoginTime?: Maybe<DateTimeInput>;
+  lastLogoutTime?: Maybe<DateTimeInput>;
+  isOnline?: Maybe<Boolean>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  birthDate?: Maybe<DateTimeInput>;
+  sexe?: Maybe<SexeType>;
+  telephone?: Maybe<Int>;
+  isActive?: Maybe<Boolean>;
+  role?: Maybe<UserRole>;
+  image?: Maybe<String>;
+}
 
 export interface UserCreateInput {
-  isBaned?: Maybe<Boolean>;
+  isBanned?: Maybe<Boolean>;
   address?: Maybe<String>;
   description?: Maybe<String>;
   lastLoginTime?: Maybe<DateTimeInput>;
@@ -553,23 +587,11 @@ export interface UserCreateInput {
   image?: Maybe<String>;
 }
 
-export interface UserUpdateInput {
-  isBaned?: Maybe<Boolean>;
-  address?: Maybe<String>;
-  description?: Maybe<String>;
-  lastLoginTime?: Maybe<DateTimeInput>;
-  lastLogoutTime?: Maybe<DateTimeInput>;
-  isOnline?: Maybe<Boolean>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  birthDate?: Maybe<DateTimeInput>;
-  sexe?: Maybe<SexeType>;
-  telephone?: Maybe<Int>;
-  isActive?: Maybe<Boolean>;
-  role?: Maybe<UserRole>;
-  image?: Maybe<String>;
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface UserCreateOneInput {
@@ -659,24 +681,10 @@ export interface TokenSubscriptionWhereInput {
   NOT?: Maybe<TokenSubscriptionWhereInput[] | TokenSubscriptionWhereInput>;
 }
 
-export interface UserUpdateDataInput {
-  isBaned?: Maybe<Boolean>;
-  address?: Maybe<String>;
-  description?: Maybe<String>;
-  lastLoginTime?: Maybe<DateTimeInput>;
-  lastLogoutTime?: Maybe<DateTimeInput>;
-  isOnline?: Maybe<Boolean>;
-  email?: Maybe<String>;
-  password?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  birthDate?: Maybe<DateTimeInput>;
-  sexe?: Maybe<SexeType>;
-  telephone?: Maybe<Int>;
-  isActive?: Maybe<Boolean>;
-  role?: Maybe<UserRole>;
-  image?: Maybe<String>;
-}
+export type TokenWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  value?: Maybe<String>;
+}>;
 
 export interface TokenWhereInput {
   id?: Maybe<ID_Input>;
@@ -726,7 +734,7 @@ export interface TokenWhereInput {
 }
 
 export interface UserUpdateManyMutationInput {
-  isBaned?: Maybe<Boolean>;
+  isBanned?: Maybe<Boolean>;
   address?: Maybe<String>;
   description?: Maybe<String>;
   lastLoginTime?: Maybe<DateTimeInput>;
@@ -744,11 +752,23 @@ export interface UserUpdateManyMutationInput {
   image?: Maybe<String>;
 }
 
-export interface UserUpdateOneRequiredInput {
-  create?: Maybe<UserCreateInput>;
-  update?: Maybe<UserUpdateDataInput>;
-  upsert?: Maybe<UserUpsertNestedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface UserUpdateInput {
+  isBanned?: Maybe<Boolean>;
+  address?: Maybe<String>;
+  description?: Maybe<String>;
+  lastLoginTime?: Maybe<DateTimeInput>;
+  lastLogoutTime?: Maybe<DateTimeInput>;
+  isOnline?: Maybe<Boolean>;
+  email?: Maybe<String>;
+  password?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  birthDate?: Maybe<DateTimeInput>;
+  sexe?: Maybe<SexeType>;
+  telephone?: Maybe<Int>;
+  isActive?: Maybe<Boolean>;
+  role?: Maybe<UserRole>;
+  image?: Maybe<String>;
 }
 
 export interface NodeNode {
@@ -772,27 +792,8 @@ export interface UserEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ContactUsMessageEdge {
-  node: ContactUsMessage;
-  cursor: String;
-}
-
-export interface ContactUsMessageEdgePromise
-  extends Promise<ContactUsMessageEdge>,
-    Fragmentable {
-  node: <T = ContactUsMessagePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ContactUsMessageEdgeSubscription
-  extends Promise<AsyncIterator<ContactUsMessageEdge>>,
-    Fragmentable {
-  node: <T = ContactUsMessageSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface UserPreviousValues {
-  isBaned?: Boolean;
+  isBanned?: Boolean;
   address?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -816,7 +817,7 @@ export interface UserPreviousValues {
 export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
-  isBaned: () => Promise<Boolean>;
+  isBanned: () => Promise<Boolean>;
   address: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -840,7 +841,7 @@ export interface UserPreviousValuesPromise
 export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
-  isBaned: () => Promise<AsyncIterator<Boolean>>;
+  isBanned: () => Promise<AsyncIterator<Boolean>>;
   address: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -877,6 +878,29 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
 export interface UserConnection {
   pageInfo: PageInfo;
   edges: UserEdge[];
@@ -898,42 +922,29 @@ export interface UserConnectionSubscription
   aggregate: <T = AggregateUserSubscription>() => T;
 }
 
-export interface ContactUsMessage {
-  id: ID_Output;
-  fullName?: String;
-  subject?: String;
-  message: String;
-  email: String;
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface ContactUsMessagePromise
-  extends Promise<ContactUsMessage>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  fullName: () => Promise<String>;
-  subject: () => Promise<String>;
-  message: () => Promise<String>;
-  email: () => Promise<String>;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface ContactUsMessageSubscription
-  extends Promise<AsyncIterator<ContactUsMessage>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  fullName: () => Promise<AsyncIterator<String>>;
-  subject: () => Promise<AsyncIterator<String>>;
-  message: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ContactUsMessageNullablePromise
-  extends Promise<ContactUsMessage | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  fullName: () => Promise<String>;
-  subject: () => Promise<String>;
-  message: () => Promise<String>;
-  email: () => Promise<String>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface TokenSubscriptionPayload {
@@ -977,27 +988,25 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+export interface ContactUsMessageConnection {
+  pageInfo: PageInfo;
+  edges: ContactUsMessageEdge[];
 }
 
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
+export interface ContactUsMessageConnectionPromise
+  extends Promise<ContactUsMessageConnection>,
     Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ContactUsMessageEdge>>() => T;
+  aggregate: <T = AggregateContactUsMessagePromise>() => T;
+}
+
+export interface ContactUsMessageConnectionSubscription
+  extends Promise<AsyncIterator<ContactUsMessageConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ContactUsMessageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateContactUsMessageSubscription>() => T;
 }
 
 export interface AggregateToken {
@@ -1037,96 +1046,39 @@ export interface TokenConnectionSubscription
   aggregate: <T = AggregateTokenSubscription>() => T;
 }
 
-export interface User {
-  isBaned?: Boolean;
-  address?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  description?: String;
-  lastLoginTime?: DateTimeOutput;
-  lastLogoutTime?: DateTimeOutput;
-  isOnline?: Boolean;
+export interface Token {
   id: ID_Output;
-  email: String;
-  password: String;
-  firstName: String;
-  lastName: String;
-  birthDate: DateTimeOutput;
-  sexe: SexeType;
-  telephone?: Int;
-  isActive?: Boolean;
-  role: UserRole;
-  image?: String;
+  type: TokenType;
+  value: String;
+  createdAt: DateTimeOutput;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
-  isBaned: () => Promise<Boolean>;
-  address: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  description: () => Promise<String>;
-  lastLoginTime: () => Promise<DateTimeOutput>;
-  lastLogoutTime: () => Promise<DateTimeOutput>;
-  isOnline: () => Promise<Boolean>;
+export interface TokenPromise extends Promise<Token>, Fragmentable {
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  birthDate: () => Promise<DateTimeOutput>;
-  sexe: () => Promise<SexeType>;
-  telephone: () => Promise<Int>;
-  isActive: () => Promise<Boolean>;
-  role: () => Promise<UserRole>;
-  image: () => Promise<String>;
+  type: () => Promise<TokenType>;
+  user: <T = UserPromise>() => T;
+  value: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface TokenSubscription
+  extends Promise<AsyncIterator<Token>>,
     Fragmentable {
-  isBaned: () => Promise<AsyncIterator<Boolean>>;
-  address: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  description: () => Promise<AsyncIterator<String>>;
-  lastLoginTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  lastLogoutTime: () => Promise<AsyncIterator<DateTimeOutput>>;
-  isOnline: () => Promise<AsyncIterator<Boolean>>;
   id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  firstName: () => Promise<AsyncIterator<String>>;
-  lastName: () => Promise<AsyncIterator<String>>;
-  birthDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  sexe: () => Promise<AsyncIterator<SexeType>>;
-  telephone: () => Promise<AsyncIterator<Int>>;
-  isActive: () => Promise<AsyncIterator<Boolean>>;
-  role: () => Promise<AsyncIterator<UserRole>>;
-  image: () => Promise<AsyncIterator<String>>;
+  type: () => Promise<AsyncIterator<TokenType>>;
+  user: <T = UserSubscription>() => T;
+  value: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface UserNullablePromise
-  extends Promise<User | null>,
+export interface TokenNullablePromise
+  extends Promise<Token | null>,
     Fragmentable {
-  isBaned: () => Promise<Boolean>;
-  address: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  description: () => Promise<String>;
-  lastLoginTime: () => Promise<DateTimeOutput>;
-  lastLogoutTime: () => Promise<DateTimeOutput>;
-  isOnline: () => Promise<Boolean>;
   id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  firstName: () => Promise<String>;
-  lastName: () => Promise<String>;
-  birthDate: () => Promise<DateTimeOutput>;
-  sexe: () => Promise<SexeType>;
-  telephone: () => Promise<Int>;
-  isActive: () => Promise<Boolean>;
-  role: () => Promise<UserRole>;
-  image: () => Promise<String>;
+  type: () => Promise<TokenType>;
+  user: <T = UserPromise>() => T;
+  value: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
 }
 
 export interface ContactUsMessagePreviousValues {
@@ -1135,6 +1087,8 @@ export interface ContactUsMessagePreviousValues {
   subject?: String;
   message: String;
   email: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
 export interface ContactUsMessagePreviousValuesPromise
@@ -1145,6 +1099,8 @@ export interface ContactUsMessagePreviousValuesPromise
   subject: () => Promise<String>;
   message: () => Promise<String>;
   email: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface ContactUsMessagePreviousValuesSubscription
@@ -1155,6 +1111,8 @@ export interface ContactUsMessagePreviousValuesSubscription
   subject: () => Promise<AsyncIterator<String>>;
   message: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface ContactUsMessageSubscriptionPayload {
@@ -1207,85 +1165,158 @@ export interface TokenPreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface ContactUsMessageConnection {
-  pageInfo: PageInfo;
-  edges: ContactUsMessageEdge[];
-}
-
-export interface ContactUsMessageConnectionPromise
-  extends Promise<ContactUsMessageConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ContactUsMessageEdge>>() => T;
-  aggregate: <T = AggregateContactUsMessagePromise>() => T;
-}
-
-export interface ContactUsMessageConnectionSubscription
-  extends Promise<AsyncIterator<ContactUsMessageConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ContactUsMessageEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateContactUsMessageSubscription>() => T;
-}
-
-export interface Token {
+export interface ContactUsMessage {
   id: ID_Output;
-  type: TokenType;
-  value: String;
+  fullName?: String;
+  subject?: String;
+  message: String;
+  email: String;
   createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface TokenPromise extends Promise<Token>, Fragmentable {
+export interface ContactUsMessagePromise
+  extends Promise<ContactUsMessage>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<TokenType>;
-  user: <T = UserPromise>() => T;
-  value: () => Promise<String>;
+  fullName: () => Promise<String>;
+  subject: () => Promise<String>;
+  message: () => Promise<String>;
+  email: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface TokenSubscription
-  extends Promise<AsyncIterator<Token>>,
+export interface ContactUsMessageSubscription
+  extends Promise<AsyncIterator<ContactUsMessage>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<TokenType>>;
-  user: <T = UserSubscription>() => T;
-  value: () => Promise<AsyncIterator<String>>;
+  fullName: () => Promise<AsyncIterator<String>>;
+  subject: () => Promise<AsyncIterator<String>>;
+  message: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface TokenNullablePromise
-  extends Promise<Token | null>,
+export interface ContactUsMessageNullablePromise
+  extends Promise<ContactUsMessage | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<TokenType>;
-  user: <T = UserPromise>() => T;
-  value: () => Promise<String>;
+  fullName: () => Promise<String>;
+  subject: () => Promise<String>;
+  message: () => Promise<String>;
+  email: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
+export interface AggregateContactUsMessage {
+  count: Int;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface AggregateContactUsMessagePromise
+  extends Promise<AggregateContactUsMessage>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  count: () => Promise<Int>;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface AggregateContactUsMessageSubscription
+  extends Promise<AsyncIterator<AggregateContactUsMessage>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface User {
+  isBanned?: Boolean;
+  address?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  description?: String;
+  lastLoginTime?: DateTimeOutput;
+  lastLogoutTime?: DateTimeOutput;
+  isOnline?: Boolean;
+  id: ID_Output;
+  email: String;
+  password: String;
+  firstName: String;
+  lastName: String;
+  birthDate: DateTimeOutput;
+  sexe: SexeType;
+  telephone?: Int;
+  isActive?: Boolean;
+  role: UserRole;
+  image?: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  isBanned: () => Promise<Boolean>;
+  address: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  description: () => Promise<String>;
+  lastLoginTime: () => Promise<DateTimeOutput>;
+  lastLogoutTime: () => Promise<DateTimeOutput>;
+  isOnline: () => Promise<Boolean>;
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  birthDate: () => Promise<DateTimeOutput>;
+  sexe: () => Promise<SexeType>;
+  telephone: () => Promise<Int>;
+  isActive: () => Promise<Boolean>;
+  role: () => Promise<UserRole>;
+  image: () => Promise<String>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  isBanned: () => Promise<AsyncIterator<Boolean>>;
+  address: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  description: () => Promise<AsyncIterator<String>>;
+  lastLoginTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  lastLogoutTime: () => Promise<AsyncIterator<DateTimeOutput>>;
+  isOnline: () => Promise<AsyncIterator<Boolean>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  firstName: () => Promise<AsyncIterator<String>>;
+  lastName: () => Promise<AsyncIterator<String>>;
+  birthDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  sexe: () => Promise<AsyncIterator<SexeType>>;
+  telephone: () => Promise<AsyncIterator<Int>>;
+  isActive: () => Promise<AsyncIterator<Boolean>>;
+  role: () => Promise<AsyncIterator<UserRole>>;
+  image: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  isBanned: () => Promise<Boolean>;
+  address: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  description: () => Promise<String>;
+  lastLoginTime: () => Promise<DateTimeOutput>;
+  lastLogoutTime: () => Promise<DateTimeOutput>;
+  isOnline: () => Promise<Boolean>;
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  firstName: () => Promise<String>;
+  lastName: () => Promise<String>;
+  birthDate: () => Promise<DateTimeOutput>;
+  sexe: () => Promise<SexeType>;
+  telephone: () => Promise<Int>;
+  isActive: () => Promise<Boolean>;
+  role: () => Promise<UserRole>;
+  image: () => Promise<String>;
 }
 
 export interface TokenEdge {
@@ -1305,20 +1336,23 @@ export interface TokenEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateContactUsMessage {
-  count: Int;
+export interface ContactUsMessageEdge {
+  node: ContactUsMessage;
+  cursor: String;
 }
 
-export interface AggregateContactUsMessagePromise
-  extends Promise<AggregateContactUsMessage>,
+export interface ContactUsMessageEdgePromise
+  extends Promise<ContactUsMessageEdge>,
     Fragmentable {
-  count: () => Promise<Int>;
+  node: <T = ContactUsMessagePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregateContactUsMessageSubscription
-  extends Promise<AsyncIterator<AggregateContactUsMessage>>,
+export interface ContactUsMessageEdgeSubscription
+  extends Promise<AsyncIterator<ContactUsMessageEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = ContactUsMessageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 /*
@@ -1327,16 +1361,6 @@ The `Boolean` scalar type represents `true` or `false`.
 export type Boolean = boolean;
 
 export type Long = string;
-
-/*
-DateTime scalar input type, allowing Date
-*/
-export type DateTimeInput = Date | string;
-
-/*
-DateTime scalar output type, which is always a string
-*/
-export type DateTimeOutput = string;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -1348,6 +1372,16 @@ export type ID_Output = string;
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
+
+/*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.

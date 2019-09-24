@@ -12,10 +12,7 @@ const FormLayout = ({ title, ...props }) => {
           // xs={{ offset: 1, span: 10 }}
           className=" p-sm-4 p-4 "
         >
-          <h1
-            className="display-4 pb-2 color-blue"
-            style={{ fontSize: "40px" }}
-          >
+          <h1 className=" color-blue" style={{ fontSize: "24px" }}>
             {title || ""}
           </h1>
           <hr className="mb-4 mt-4" />

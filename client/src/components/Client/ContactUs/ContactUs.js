@@ -4,8 +4,8 @@ import ContactFormContainer from "./ContactForm/ContactFormContainer";
 const FormLayout = ({ user, isOwner = false }) => {
   return (
     <>
-      <Informations />
       <ContactFormContainer />
+      <Informations />
     </>
   );
 };

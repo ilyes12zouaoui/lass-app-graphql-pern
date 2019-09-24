@@ -1,0 +1,25 @@
+@keyframes footer-animation {
+  0% {
+    color: #ff1b5fcc;
+    /* background: -webkit-linear-gradient(#eee, rgb(78, 2, 255), #333);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+  }
+  100% {
+    color: rgb(148, 144, 144);
+    /* background: -webkit-linear-gradient(#eee, rgb(255, 2, 2), #333);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+  }
+}
+
+.footer-animation {
+  font-weight: 600;
+  animation-name: footer-animation;
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+  animation-direction: alternate;
+  transition: all 0.7s ease;
+}

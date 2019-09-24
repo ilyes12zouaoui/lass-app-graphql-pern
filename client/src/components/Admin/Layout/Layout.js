@@ -6,7 +6,14 @@ const Layout = props => {
   return (
     <>
       <Header />
-      <main>{props.children || "empty main admin"}</main>
+      <main
+        style={{
+          minHeight: "85vh",
+          backgroundColor: "rgb(246, 247, 247)"
+        }}
+      >
+        {props.children || "empty main admin"}
+      </main>
       <Footer />
     </>
   );

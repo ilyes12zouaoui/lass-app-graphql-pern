@@ -8,7 +8,8 @@ export const USER = gql`
       telephone
       isOnline
       isActive
-      isBaned
+      isBanned
+
       password
       firstName
       lastName

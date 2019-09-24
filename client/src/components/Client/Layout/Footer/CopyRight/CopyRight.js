@@ -44,7 +44,7 @@ export default () => {
 
       <footer
         style={{
-          minHeight: "64px",
+          minHeight: "55px",
           backgroundColor: "rgb(44, 49, 60)",
           position: "relative",
           // position: "sticky",
@@ -64,11 +64,9 @@ export default () => {
             <div className="col-md-7 col-lg-8 mb-md-0 mb-sm-2 mb-2">
               <p
                 className="text-center text-md-left m-0 footer-animation"
-                style={
-                  {
-                    // color: "white",
-                  }
-                }
+                style={{
+                  fontSize: "16px"
+                }}
               >
                 © 2019 Copyright : made by lass
                 <FontAwesomeIcon
@@ -88,7 +86,7 @@ export default () => {
                     >
                       <img
                         src={facebookIcon}
-                        style={{ width: "35px", height: "35px" }}
+                        style={{ width: "32px", height: "32px" }}
                       />
                     </a>
                   </li>
@@ -99,7 +97,7 @@ export default () => {
                     >
                       <img
                         src={linkedInIcon}
-                        style={{ width: "35px", height: "35px" }}
+                        style={{ width: "32px", height: "32px" }}
                       />
                     </a>
                   </li>
@@ -108,8 +106,8 @@ export default () => {
                       onClick={() => setModalShow(true)}
                       src={googlePlusIcon}
                       style={{
-                        width: "35px",
-                        height: "35px",
+                        width: "32px",
+                        height: "32px",
                         cursor: "pointer"
                       }}
                     />
@@ -121,7 +119,7 @@ export default () => {
                     >
                       <img
                         src={githubIcon}
-                        style={{ width: "35px", height: "35px" }}
+                        style={{ width: "32px", height: "32px" }}
                       />
                     </a>
                   </li>
