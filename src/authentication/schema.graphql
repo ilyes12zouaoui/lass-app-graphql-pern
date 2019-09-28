@@ -4,7 +4,7 @@ type Mutation {
   createAdmin(data: CustomUserCreateInput!): User!
   loginUser(data: LoginUserInput!): LoginUserResult!
   # loginAdmin(data: LoginAdminInput!): LoginAdminResult!
-  logout(data: LogoutInput!): Boolean!
+  logout: Boolean!
   activateAccount(data: ActivateAccountInput!): Boolean!
   resetPasswordChechToken(data: ResetPasswordChechTokenInput!): Boolean!
   resetPasswordUsingToken(data: ResetPasswordTokenInput!): Boolean!

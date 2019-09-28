@@ -135,21 +135,15 @@ module.exports = {
   //     jwt: generateJWT(_.omit(user, ["password", "isActive", "isOnline"]))
   //   };
   // },
-  logout: async (parent, { data: { id } }, { prisma, req }) => {
+  logout: async (parent, args, { prisma, req }) => {
     //getting the user with provided email
-    let user = null;
-    try {
-      user = await prisma.user({
-        id
-      });
-    } catch (error) {
-      console.log("error at logout");
-    }
+
+    if (!req.user) throw Error("Unauthenticated");
+
     //validation
-    if (!user) throw new Error("wrong user id");
     await prisma.updateUser({
       where: {
-        id
+        id: req.user.id
       },
       data: {
         isOnline: false,

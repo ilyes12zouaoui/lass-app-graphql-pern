@@ -6,11 +6,19 @@ import DropDown from "../DropDown";
 import { SIMPLE, ADMIN, STAFF } from "../../../../../../configs/userRoles";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { LOGOUT } from "../../../../../../graphql/mutations/authentication/logout";
 
 const UserContainer = props => {
   const dispatch = useDispatch();
+  const [logout, { data, loading, error, called }] = useMutation(LOGOUT, {
+    ignoreResults: false,
+    onCompleted: data => {
+      dispatch(ThunkDisconnectUser());
+    }
+  });
   const onLogout = () => {
-    dispatch(ThunkDisconnectUser());
+    logout();
   };
   const user = useSelector(state => {
     return state.authentication.user;
