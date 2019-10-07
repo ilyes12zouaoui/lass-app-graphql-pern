@@ -63,8 +63,8 @@ const FormLayout = () => {
               </a>{" "}
               (TWIN: Technology Web And Internet specialty ), this is my final
               year and i'm in active search for a final year internship at
-              germany, also i'm the webmaster of IEEE ESPRIT club, and i worked
-              as a part-time web instructor at{" "}
+              germany ( berlin ), also i'm the webmaster of IEEE ESPRIT club,
+              and i worked as a part-time web instructor at{" "}
               <a
                 className={style.aboutLink}
                 href="https://www.gomycode.tn/"

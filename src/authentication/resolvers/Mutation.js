@@ -1,7 +1,7 @@
 const passwordHash = require("../../helpers/passwordHash");
 const generateJWT = require("../../helpers/generateJWT");
 const sendEmail = require("../../helpers/email/SendEmail");
-const { EMAIL_TEMPLETES } = require("../../helpers/email/Configs");
+const { EMAIL_TEMPLETES } = require("../../helpers/email/ConfigsProd");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const { ROLES, TOKEN_TYPES } = require("../../configs");

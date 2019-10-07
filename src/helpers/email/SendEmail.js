@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const accountActivationEmailTemplate = require("./templetes/accountActivationTemplate");
 const resetPasswordEmailTempalte = require("./templetes/resetPasswordTemplate");
-const { GMAIL_CONFIGURATIONS, EMAIL_TEMPLETES } = require("./Configs");
+const { GMAIL_CONFIGURATIONS, EMAIL_TEMPLETES } = require("./ConfigsProd");
 
 const produceEmailData = (user, token, TEMPLETE) => {
   // console.log("user", user);

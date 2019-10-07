@@ -125,7 +125,7 @@ const emailTemplate = (firstName, lastName, token) => {
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td class="m-center mpb10" style="text-align:center;
-																		padding: 18px 18px 18px 18px;"><h1 style="font-size: 38px;color:"#fff">LASS APP</h1></td>
+																		padding: 18px 18px 18px 18px;"><h1 style="font-size: 38px;color:rgb(33, 173, 228);">LASS APP</h1></td>
 																	</tr>
 																</table>
 															</th>

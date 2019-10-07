@@ -4,6 +4,7 @@ import githubIcon from "./icons/github.png";
 import linkedInIcon from "./icons/linkedin.png";
 import googlePlusIcon from "./icons/google-plus.png";
 import { Modal, Button } from "react-bootstrap";
+import youtubeIcon from "./icons/youtube.png";
 import "./CopyRight.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -120,6 +121,17 @@ export default () => {
                       <img
                         src={githubIcon}
                         style={{ width: "32px", height: "32px" }}
+                      />
+                    </a>
+                  </li>
+                  <li className="list-inline-item">
+                    <a
+                      href="https://www.youtube.com/channel/UCmHLMyg-aLEpteU3jmClq8g"
+                      target="_blank"
+                    >
+                      <img
+                        src={youtubeIcon}
+                        style={{ width: "37px", height: "37px" }}
                       />
                     </a>
                   </li>
