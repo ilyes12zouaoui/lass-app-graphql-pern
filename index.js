@@ -4,6 +4,7 @@ const passport = require("passport");
 // const { importSchema } = require("graphql-import");
 const express = require("express");
 const http = require("http");
+const path = require("path");
 require("./express/passportConfig")(passport);
 // const fs = require("fs");
 
@@ -32,7 +33,7 @@ const typeDefs = require("./src/app/schemas");
 
 //creating our graphql server
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 app.use("/graphql", (req, res, next) => {
   passport.authenticate(
@@ -48,7 +49,14 @@ app.use("/graphql", (req, res, next) => {
     }
   )(req, res, next);
 });
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
 
+  app.get("/*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -66,8 +74,6 @@ httpServer.listen({ port: PORT }, () => {
     `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
   );
   console.log(
-    `🚀 Subscriptions ready at ws://localhost:${PORT}${
-      server.subscriptionsPath
-    }`
+    `🚀 Subscriptions ready at ws://localhost:${PORT}${server.subscriptionsPath}`
   );
 });
