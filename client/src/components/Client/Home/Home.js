@@ -59,7 +59,9 @@ const FormLayout = () => {
               }}
             >
               update this file "src/helpers/email/ConfigProd.js" with the
-              correct email address and password, enjoy :D
+              correct email address and password, and update the path to where
+              you want to save files at this directory "src/helpers/file" enjoy
+              :D
             </p>
             <p
               style={{
