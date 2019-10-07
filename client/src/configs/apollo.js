@@ -18,7 +18,7 @@ import { createUploadLink } from "apollo-upload-client";
 // });
 
 const httpLink = new createUploadLink({
-  uri: "https://lass-graphql-app.herokuapp.com/graphql", // Server URL (must be absolute)
+  uri: "http://localhost:4000/graphql", // Server URL (must be absolute)
   credentials: "same-origin" // Additional fetch() options like `credentials` or `headers`
   // Use fetch() polyfill on the server
   // fetch: !isBrowser && fetch
@@ -26,7 +26,7 @@ const httpLink = new createUploadLink({
 
 const wsLink = new WebSocketLink({
   // if you instantiate in the server, the error will be thrown
-  uri: `wss://lass-graphql-app.herokuapp.com/graphql`,
+  uri: `ws://localhost:4000/graphql`,
   options: {
     reconnect: true
   }

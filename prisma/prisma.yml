@@ -1,4 +1,4 @@
-endpoint: https://lassgraphqlapp-b039b280df.herokuapp.com/
+endpoint: http://127.0.0.1:4466
 datamodel: datamodel.prisma
 secret: mysecret
 

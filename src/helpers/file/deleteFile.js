@@ -7,7 +7,7 @@ const deleteFileFromProject = async (
   subFolderPath = "",
   callback
 ) => {
-  const path = `${__dirname}/../../../client/build/images/${subFolderPath}/${fileName}`;
+  const path = `${__dirname}/../../../client/public/images/${subFolderPath}/${fileName}`;
   await fs.unlink(
     // path.join(__dirname, "/../client/public/images/", fileName),
     path,
