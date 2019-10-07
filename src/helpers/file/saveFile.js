@@ -13,7 +13,7 @@ module.exports = (stream, fileName, subFolderPath = "") => {
   let newFileName = `${generateUniqueId()}${fileName.substr(
     fileName.lastIndexOf(".")
   )}`;
-  const path = `${MAIN_PATH}/${subFolderPath}/${newFileName}`;
+  const path = `${__dirname}/../../../client/build/images/${subFolderPath}/${newFileName}`;
   return new Promise((resolve, reject) =>
     stream
       .on("error", error => {
