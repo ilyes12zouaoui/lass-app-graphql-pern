@@ -60,8 +60,9 @@ const FormLayout = () => {
             >
               update this file "src/helpers/email/ConfigProd.js" with the
               correct email address and password, and update the path to where
-              you want to save files at this directory "src/helpers/file" enjoy
-              :D
+              you want to save files at this directory "src/helpers/file",
+              update "prisma/prisma.yml" endpoint, update
+              "client/src/config/apollo" uri and enjoy :D
             </p>
             <p
               style={{
